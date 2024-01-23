@@ -6,7 +6,7 @@
 /*   By: efret <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 11:51:52 by efret             #+#    #+#             */
-/*   Updated: 2024/01/23 10:47:56 by efret            ###   ########.fr       */
+/*   Updated: 2024/01/23 15:09:52 by efret            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ typedef struct s_field
 {
 	char	prefix;
 	short	alt;
-}	t_field;
+}			t_field;
 
 int				ft_isalpha(int c);
 int				ft_isdigit(int c);
