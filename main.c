@@ -6,7 +6,7 @@
 /*   By: efret <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/25 12:39:58 by efret             #+#    #+#             */
-/*   Updated: 2024/01/25 17:47:52 by efret            ###   ########.fr       */
+/*   Updated: 2024/01/25 18:49:24 by efret            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ void	ft_stackdel_front(t_stack *stack)
 
 void	ft_stackdel(t_stack **stack)
 {
-	if (!stack || !(*stack)->head)
+	if (!*stack)
 		return ;
 	while ((*stack)->len)
 		ft_stackdel_front(*stack);
@@ -138,6 +138,118 @@ void	ft_display_stacks(t_stack *a, t_stack *b)
 	ft_printf(" _\t_\n a\tb\n");
 }
 
+void	ft_stacks_sa(t_stack *a, t_stack *b)
+{
+	int	tmp;
+
+	(void)b;
+	if (!a || a->len <= 1)
+		return ;
+	tmp = a->head->value;
+	a->head->value = a->head->next->value;
+	a->head->next->value = tmp;
+	ft_printf("sa\n");
+}
+
+void	ft_stacks_sb(t_stack *a, t_stack *b)
+{
+	int	tmp;
+
+	(void)a;
+	if (!b || b->len <= 1)
+		return ;
+	tmp = b->head->value;
+	b->head->value = b->head->next->value;
+	b->head->next->value = tmp;
+	ft_printf("sb\n");
+}
+
+void	ft_stacks_ss(t_stack *a, t_stack *b)
+{
+	ft_stacks_sa(a, b);
+	ft_stacks_sb(a, b);
+}
+
+void	ft_stacks_ra(t_stack *a, t_stack *b)
+{
+	(void)b;
+	if (!a || a->len <= 1)
+		return ;
+	a->last = a->head;
+	a->head = a->head->next;
+	ft_printf("ra\n");
+}
+
+void	ft_stacks_rb(t_stack *a, t_stack *b)
+{
+	(void)a;
+	if (!b || b->len <= 1)
+		return ;
+	b->last = b->head;
+	b->head = b->head->next;
+	ft_printf("rb\n");
+}
+
+void	ft_stacks_rr(t_stack *a, t_stack *b)
+{
+	ft_stacks_ra(a, b);
+	ft_stacks_rb(a, b);
+}
+
+void	ft_stacks_rra(t_stack *a, t_stack *b)
+{
+	t_stack_node	*tmp;
+
+	(void)b;
+	if (!a || a->len <= 1)
+		return ;
+	tmp = a->head;
+	while (tmp->next != a->last)
+		tmp = tmp->next;
+	a->head = a->last;
+	a->last = tmp;
+	ft_printf("rra\n");
+}
+
+void	ft_stacks_rrb(t_stack *a, t_stack *b)
+{
+	t_stack_node	*tmp;
+
+	(void)a;
+	if (!b || b->len <= 1)
+		return ;
+	tmp = b->head;
+	while (tmp->next != b->last)
+		tmp = tmp->next;
+	b->head = b->last;
+	b->last = tmp;
+	ft_printf("rrb\n");
+}
+
+void	ft_stacks_rrr(t_stack *a, t_stack *b)
+{
+	ft_stacks_rra(a, b);
+	ft_stacks_rrb(a, b);
+}
+
+void	ft_stacks_pa(t_stack *a, t_stack *b)
+{
+	if (!a || !b || !b->len)
+		return ;
+	ft_stackadd_front(a, b->head->value);
+	ft_stackdel_front(b);
+	ft_printf("pa\n");
+}
+
+void	ft_stacks_pb(t_stack *a, t_stack *b)
+{
+	if (!a || !b || !a->len)
+		return ;
+	ft_stackadd_front(b, a->head->value);
+	ft_stackdel_front(a);
+	ft_printf("pb\n");
+}
+
 int	main(void)
 {
 	t_stack *a = ft_calloc(1, sizeof(t_stack));
@@ -151,6 +263,41 @@ int	main(void)
 	ft_stackadd_front(b, 3);
 	ft_stackadd_front(b, 5);
 	ft_stack_print(b);
+
+	ft_printf("INIT\n");
+	ft_display_stacks(a, b);
+
+	ft_stacks_sa(a, b);
+	ft_display_stacks(a, b);
+
+	ft_stacks_sb(a, b);
+	ft_display_stacks(a, b);
+
+	ft_stacks_ra(a, b);
+	ft_display_stacks(a, b);
+
+	ft_stacks_rb(a, b);
+	ft_display_stacks(a, b);
+
+	ft_stacks_rr(a, b);
+	ft_display_stacks(a, b);
+
+	ft_stacks_pa(a, b);
+	ft_display_stacks(a, b);
+
+	ft_stacks_rra(a, b);
+	ft_display_stacks(a, b);
+
+	ft_stacks_rrb(a, b);
+	ft_display_stacks(a, b);
+
+	ft_stacks_rrr(a, b);
+	ft_display_stacks(a, b);
+
+	ft_stacks_pb(a, b);
+	ft_display_stacks(a, b);
+
+	ft_stacks_ss(a, b);
 	ft_display_stacks(a, b);
 
 	ft_stackdel(&a);
