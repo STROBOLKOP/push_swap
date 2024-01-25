@@ -6,7 +6,7 @@
 /*   By: efret <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/25 12:39:58 by efret             #+#    #+#             */
-/*   Updated: 2024/01/25 18:49:24 by efret            ###   ########.fr       */
+/*   Updated: 2024/01/25 19:28:50 by efret            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -280,6 +280,12 @@ int	main(void)
 	ft_display_stacks(a, b);
 
 	ft_stacks_rr(a, b);
+	ft_display_stacks(a, b);
+
+	ft_stacks_pa(a, b);
+	ft_display_stacks(a, b);
+
+	ft_stacks_pa(a, b);
 	ft_display_stacks(a, b);
 
 	ft_stacks_pa(a, b);
