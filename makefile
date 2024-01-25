@@ -6,7 +6,7 @@
 #    By: efret <marvin@42.fr>                       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/23 11:05:01 by efret             #+#    #+#              #
-#    Updated: 2024/01/23 11:23:48 by efret            ###   ########.fr        #
+#    Updated: 2024/01/25 14:46:22 by efret            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,7 +30,7 @@ all: ${NAME}
 ${NAME}: ${LIBFT}/${LIBFT}.a ${SRCS}
 	@echo -n "${YELLOW}"
 	${CC} ${CFLAGS} ${SRCS} ${LIBFT}/${LIBFT}.a -o ${NAME}
-	@echo "%{GREEN}${NAME} Done compiling.${RESET}"
+	@echo "${GREEN}${NAME} Done compiling.${RESET}"
 
 ${LIBFT}/${LIBFT}.a:
 	@make -sC ${LIBFT}
