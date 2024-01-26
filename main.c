@@ -6,7 +6,7 @@
 /*   By: efret <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/25 12:39:58 by efret             #+#    #+#             */
-/*   Updated: 2024/01/26 16:22:02 by efret            ###   ########.fr       */
+/*   Updated: 2024/01/26 17:04:02 by efret            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -286,8 +286,6 @@ void	ft_stacks_interactive(t_stack *a, t_stack *b)
 			ft_stacks_pa(a, b);
 		else if (!ft_strncmp(line, "pb\n", 3) && ft_strlen(line) == 3)
 			ft_stacks_pb(a, b);
-		else
-			continue ;
 		free(line);
 		ft_display_stacks(a, b);
 	}
@@ -296,10 +294,10 @@ void	ft_stacks_interactive(t_stack *a, t_stack *b)
 int	main(void)
 {
 	t_stack *a = ft_calloc(1, sizeof(t_stack));
+	ft_stackadd_front(a, 3);
+	ft_stackadd_front(a, 4);
 	ft_stackadd_front(a, 1);
 	ft_stackadd_front(a, 2);
-	ft_stackadd_front(a, 4);
-	ft_stackadd_front(a, 10);
 	ft_stack_print(a);
 
 	t_stack *b = ft_calloc(1, sizeof(t_stack));
