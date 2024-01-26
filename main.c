@@ -56,7 +56,7 @@ void	ft_stackdel(t_stack **stack)
 	return ;
 }
 
-void	ft_stackadd_front(t_stack *stack, int	value)
+void	ft_stackadd_front(t_stack *stack, int value)
 {
 	t_stack_node	*tmp;
 
@@ -75,6 +75,22 @@ void	ft_stackadd_front(t_stack *stack, int	value)
 		stack->head = tmp;
 	}
 	stack->last->next = stack->head;
+	(stack->len)++;
+}
+
+void	ft_stackadd_back(t_stack *stack, int value)
+{
+	t_stack_node	*tmp;
+
+	tmp = ft_new_stack_node(value);
+	if (!tmp)
+		return (ft_stackdel_front(stack));
+	if (!stack->len)
+		stack->head = tmp;
+	else
+		stack->last->next = tmp;
+	stack->last = tmp;
+	tmp->next = stack->head;
 	(stack->len)++;
 }
 
@@ -324,11 +340,18 @@ int	main(void)
 	ft_stack_print(a);
 
 	t_stack *b = ft_calloc(1, sizeof(t_stack));
+	ft_stackadd_back(b, 6);
+	ft_stackadd_back(b, 7);
+	ft_stackadd_back(b, 8);
+	ft_stackadd_back(b, 9);
 	ft_stack_print(b);
 
 	ft_display_stacks(a, b);
 
-	ft_stacks_interactive(a, b);
+	if (ft_check_sorted(a, b))
+		ft_printf("Good job sorting!\nWait a minute... The input was already sorted!\n");
+	else
+		ft_stacks_interactive(a, b);
 
 	ft_stackdel(&a);
 	ft_stackdel(&b);
