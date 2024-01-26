@@ -6,10 +6,11 @@
 /*   By: efret <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/25 12:39:58 by efret             #+#    #+#             */
-/*   Updated: 2024/01/25 19:28:50 by efret            ###   ########.fr       */
+/*   Updated: 2024/01/26 16:22:02 by efret            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "libft/incl/libft.h"
 #include "push_swap.h"
 
 t_stack_node	*ft_new_stack_node(int value)
@@ -250,6 +251,48 @@ void	ft_stacks_pb(t_stack *a, t_stack *b)
 	ft_printf("pb\n");
 }
 
+void	ft_stacks_interactive(t_stack *a, t_stack *b)
+{
+	char	*line;
+
+	while (1)
+	{
+		line = get_next_line(0);
+		if (!line || (!ft_strncmp(line, "q\n", 2) && ft_strlen(line) == 2))
+		{
+			if (line)
+				return (free(line));
+			return ;
+		}
+		if (!ft_strncmp(line, "sa\n", 3) && ft_strlen(line) == 3)
+			ft_stacks_sa(a, b);
+		else if (!ft_strncmp(line, "sb\n", 3) && ft_strlen(line) == 3)
+			ft_stacks_sb(a, b);
+		else if (!ft_strncmp(line, "ss\n", 3) && ft_strlen(line) == 3)
+			ft_stacks_ss(a, b);
+		else if (!ft_strncmp(line, "ra\n", 3) && ft_strlen(line) == 3)
+			ft_stacks_ra(a, b);
+		else if (!ft_strncmp(line, "rb\n", 3) && ft_strlen(line) == 3)
+			ft_stacks_rb(a, b);
+		else if (!ft_strncmp(line, "rr\n", 3) && ft_strlen(line) == 3)
+			ft_stacks_rr(a, b);
+		else if (!ft_strncmp(line, "rra\n", 4) && ft_strlen(line) == 4)
+			ft_stacks_rra(a, b);
+		else if (!ft_strncmp(line, "rrb\n", 4) && ft_strlen(line) == 4)
+			ft_stacks_rrb(a, b);
+		else if (!ft_strncmp(line, "rrr\n", 4) && ft_strlen(line) == 4)
+			ft_stacks_rrr(a, b);
+		else if (!ft_strncmp(line, "pa\n", 3) && ft_strlen(line) == 3)
+			ft_stacks_pa(a, b);
+		else if (!ft_strncmp(line, "pb\n", 3) && ft_strlen(line) == 3)
+			ft_stacks_pb(a, b);
+		else
+			continue ;
+		free(line);
+		ft_display_stacks(a, b);
+	}
+}
+
 int	main(void)
 {
 	t_stack *a = ft_calloc(1, sizeof(t_stack));
@@ -260,51 +303,11 @@ int	main(void)
 	ft_stack_print(a);
 
 	t_stack *b = ft_calloc(1, sizeof(t_stack));
-	ft_stackadd_front(b, 3);
-	ft_stackadd_front(b, 5);
 	ft_stack_print(b);
 
-	ft_printf("INIT\n");
 	ft_display_stacks(a, b);
 
-	ft_stacks_sa(a, b);
-	ft_display_stacks(a, b);
-
-	ft_stacks_sb(a, b);
-	ft_display_stacks(a, b);
-
-	ft_stacks_ra(a, b);
-	ft_display_stacks(a, b);
-
-	ft_stacks_rb(a, b);
-	ft_display_stacks(a, b);
-
-	ft_stacks_rr(a, b);
-	ft_display_stacks(a, b);
-
-	ft_stacks_pa(a, b);
-	ft_display_stacks(a, b);
-
-	ft_stacks_pa(a, b);
-	ft_display_stacks(a, b);
-
-	ft_stacks_pa(a, b);
-	ft_display_stacks(a, b);
-
-	ft_stacks_rra(a, b);
-	ft_display_stacks(a, b);
-
-	ft_stacks_rrb(a, b);
-	ft_display_stacks(a, b);
-
-	ft_stacks_rrr(a, b);
-	ft_display_stacks(a, b);
-
-	ft_stacks_pb(a, b);
-	ft_display_stacks(a, b);
-
-	ft_stacks_ss(a, b);
-	ft_display_stacks(a, b);
+	ft_stacks_interactive(a, b);
 
 	ft_stackdel(&a);
 	ft_stackdel(&b);

@@ -6,7 +6,7 @@
 /*   By: efret <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 11:51:52 by efret             #+#    #+#             */
-/*   Updated: 2024/01/23 15:09:52 by efret            ###   ########.fr       */
+/*   Updated: 2024/01/26 11:22:16 by efret            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,9 @@
 # include <unistd.h>
 # include <stdint.h>
 # include <stdarg.h>
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 10
+# endif
 
 typedef struct s_list
 {
@@ -94,5 +97,7 @@ int				ft_x_fmt(int n, char uppercase, t_field *field);
 int				ft_p_fmt(void *addr);
 int				ft_format_print(const char **s, va_list *ap);
 int				ft_printf(const char *s, ...);
+
+char			*get_next_line(int fd);
 
 #endif

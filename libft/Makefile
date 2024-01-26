@@ -6,7 +6,7 @@
 #    By: efret <marvin@42.fr>                       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/20 11:38:36 by efret             #+#    #+#              #
-#    Updated: 2024/01/23 10:51:06 by efret            ###   ########.fr        #
+#    Updated: 2024/01/26 11:22:39 by efret            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,7 +31,7 @@ SRCFILES = ft_isalpha.c ft_isdigit.c ft_isalnum.c ft_isascii.c ft_isprint.c\
 	   ft_lstiter.c ft_lstmap.c ft_isspace.c ft_pow.c ft_utoa.c\
 	   ft_valid_base.c ft_atoi_base.c ft_itoa_base.c ft_utoa_base.c\
 	   ft_convert_base.c ft_ptoa_base.c\
-	   ft_printf.c ft_printf_utils.c
+	   ft_printf.c ft_printf_utils.c get_next_line.c
 SRCS = $(addprefix ${SRCPATH}, ${SRCFILES})
 
 OBJPATH = obj/
