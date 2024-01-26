@@ -251,6 +251,24 @@ void	ft_stacks_pb(t_stack *a, t_stack *b)
 	ft_printf("pb\n");
 }
 
+int	ft_check_sorted(t_stack *a, t_stack *b)
+{
+	t_stack_node	*iter;
+
+	if (!a || !b)
+		return (-1);
+	if (b->len)
+		return (0);
+	iter = a->head;
+	while (iter->next != a->head)
+	{
+		if (iter->value > iter->next->value)
+			return (0);
+		iter = iter->next;
+	}
+	return (1);
+}
+
 void	ft_stacks_interactive(t_stack *a, t_stack *b)
 {
 	char	*line;
@@ -288,6 +306,11 @@ void	ft_stacks_interactive(t_stack *a, t_stack *b)
 			ft_stacks_pb(a, b);
 		free(line);
 		ft_display_stacks(a, b);
+		if (ft_check_sorted(a, b))
+		{
+			ft_printf("Good job sorting!\n");
+			return ;
+		}
 	}
 }
 
