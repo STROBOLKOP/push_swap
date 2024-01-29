@@ -6,7 +6,7 @@
 /*   By: efret <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/25 12:39:58 by efret             #+#    #+#             */
-/*   Updated: 2024/01/26 17:04:02 by efret            ###   ########.fr       */
+/*   Updated: 2024/01/29 18:29:46 by efret            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -271,7 +271,7 @@ int	ft_check_sorted(t_stack *a, t_stack *b)
 {
 	t_stack_node	*iter;
 
-	if (!a || !b)
+	if (!a || !b || (!a->len && !b->len)) // maybe change check for both being empty, we shouldn't be in this funcion if there is no input. Or change the exit status.
 		return (-1);
 	if (b->len)
 		return (0);
@@ -333,17 +333,18 @@ void	ft_stacks_interactive(t_stack *a, t_stack *b)
 int	main(void)
 {
 	t_stack *a = ft_calloc(1, sizeof(t_stack));
-	ft_stackadd_front(a, 3);
-	ft_stackadd_front(a, 4);
-	ft_stackadd_front(a, 1);
-	ft_stackadd_front(a, 2);
+	//ft_stackadd_front(a, 3);
+	//ft_stackadd_front(a, 4);
+	//ft_stackadd_front(a, 1);
+	//ft_stackadd_front(a, 2);
+	ft_stackadd_back(a, 5);
+	ft_stackadd_back(a, 1);
+	ft_stackadd_back(a, 3);
+	ft_stackadd_back(a, 4);
+	ft_stackadd_back(a, 2);
 	ft_stack_print(a);
 
 	t_stack *b = ft_calloc(1, sizeof(t_stack));
-	ft_stackadd_back(b, 6);
-	ft_stackadd_back(b, 7);
-	ft_stackadd_back(b, 8);
-	ft_stackadd_back(b, 9);
 	ft_stack_print(b);
 
 	ft_display_stacks(a, b);
@@ -357,3 +358,13 @@ int	main(void)
 	ft_stackdel(&b);
 	return (0);
 }
+
+/*
+		min-max		actions
+123:	0-2
+132:	0-1			sa-ra || rra-sa
+213:	1-2			sa
+231:	2-1			rra
+312:	1-0			ra
+321:	2-0			ra-sa || sa-rra
+*/
