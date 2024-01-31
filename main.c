@@ -6,7 +6,7 @@
 /*   By: efret <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/25 12:39:58 by efret             #+#    #+#             */
-/*   Updated: 2024/01/31 19:42:32 by elias            ###   ########.fr       */
+/*   Updated: 2024/01/31 19:55:11 by elias            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -350,6 +350,7 @@ int	ft_between_incl(int val, int min, int max)
 void	ft_exit_handler(t_stacks *stacks, int exit_code)
 {
 	ft_del_all(&stacks);
+	ft_printf("Error\n");
 	exit(exit_code);
 }
 
@@ -448,6 +449,10 @@ int	main(int argc, char **argv)
 	stacks = ft_init_stacks();
 	ft_check_input(stacks, argc - 1, &argv[1]);
 	ft_display_stacks(stacks->a, stacks->b); // Change argument to t_stacks
+	if (ft_check_sorted(stacks->a, stacks->b)) // Change arg to t_stacks
+		ft_printf("Good job sorting!\nWait a minute... The input was already sorted!\n");
+	else
+		ft_stacks_interactive(stacks->a, stacks->b);// Change arg to t_stacks
 	ft_del_all(&stacks);
 	return (0);
 }
