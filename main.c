@@ -6,7 +6,7 @@
 /*   By: efret <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/25 12:39:58 by efret             #+#    #+#             */
-/*   Updated: 2024/01/29 18:29:46 by efret            ###   ########.fr       */
+/*   Updated: 2024/01/31 19:42:32 by elias            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,16 @@ void	ft_stackdel(t_stack **stack)
 	free(*stack);
 	*stack = NULL;
 	return ;
+}
+
+void	ft_del_all(t_stacks **stacks)
+{
+	if (!*stacks)
+		return ;
+	ft_stackdel(&(*stacks)->a);
+	ft_stackdel(&(*stacks)->b);
+	free(*stacks);
+	*stacks = NULL;
 }
 
 void	ft_stackadd_front(t_stack *stack, int value)
@@ -330,32 +340,115 @@ void	ft_stacks_interactive(t_stack *a, t_stack *b)
 	}
 }
 
-int	main(void)
+int	ft_between_incl(int val, int min, int max)
 {
+	if (min <= val && val <= max)
+		return (1);
+	return (0);
+}
+
+void	ft_exit_handler(t_stacks *stacks, int exit_code)
+{
+	ft_del_all(&stacks);
+	exit(exit_code);
+}
+
+int	ft_atoi_ofc(t_stacks *stacks, const char *nptr)
+{
+	int	sign;
+	int	number;
+	int	new_number;
+
+	sign = 1;
+	number = 0;
+	if (*nptr == '+' || *nptr == '-')
+		if (*nptr++ == '-')
+			sign = -1;
+	while (ft_between_incl(*nptr, '0', '9'))
+	{
+		new_number = number * 10 + sign * (*nptr++ - '0');
+		if (sign == 1 && new_number < number)
+			ft_exit_handler(stacks, E_INVALID_INPUT);
+		else if (sign == -1 && new_number > number)
+			ft_exit_handler(stacks, E_INVALID_INPUT);
+		number = new_number;
+	}
+	return (number);
+}
+
+int	ft_is_number(const char *s)
+{
+	if (*s == '+' || *s == '-')
+		s++;
+	while (*s)
+		if (!ft_between_incl(*s++, '0', '9'))
+			return (0);
+	return (1);
+}
+
+void	ft_check_input(t_stacks *stacks, int argc, char **argv)
+{
+	int	i;
+
+	i = 0;
+	while (i < argc)
+	{
+		if (!ft_is_number(argv[i]))
+			ft_exit_handler(stacks, E_INVALID_INPUT);
+		ft_stackadd_back(stacks->a, ft_atoi_ofc(stacks, argv[i]));
+		i++;
+	}
+}
+
+t_stacks	*ft_init_stacks(void)
+{
+	t_stacks	*ret;
+
+	ret = ft_calloc(1, sizeof(t_stacks));
+	ret->a = ft_calloc(1, sizeof(t_stack));
+	ret->b = ft_calloc(1, sizeof(t_stack));
+	return (ret);
+}
+
+int	main(int argc, char **argv)
+{
+	/*
 	t_stack *a = ft_calloc(1, sizeof(t_stack));
 	//ft_stackadd_front(a, 3);
 	//ft_stackadd_front(a, 4);
 	//ft_stackadd_front(a, 1);
 	//ft_stackadd_front(a, 2);
-	ft_stackadd_back(a, 5);
-	ft_stackadd_back(a, 1);
-	ft_stackadd_back(a, 3);
-	ft_stackadd_back(a, 4);
-	ft_stackadd_back(a, 2);
-	ft_stack_print(a);
+	//ft_stackadd_back(a, 5);
+	//ft_stackadd_back(a, 1);
+	//ft_stackadd_back(a, 3);
+	//ft_stackadd_back(a, 4);
+	//ft_stackadd_back(a, 2);
+	//ft_stack_print(a);
 
 	t_stack *b = ft_calloc(1, sizeof(t_stack));
-	ft_stack_print(b);
-
+	//ft_stack_print(b);
 	ft_display_stacks(a, b);
 
 	if (ft_check_sorted(a, b))
 		ft_printf("Good job sorting!\nWait a minute... The input was already sorted!\n");
 	else
 		ft_stacks_interactive(a, b);
-
 	ft_stackdel(&a);
 	ft_stackdel(&b);
+	*/
+
+	if (argc < 2)
+	{
+		ft_printf("Give me some arguments.\n"); // delete later.
+		return (0);
+	}
+
+	t_stacks	*stacks;
+
+	stacks = ft_init_stacks();
+	ft_check_input(stacks, argc - 1, &argv[1]);
+	ft_display_stacks(stacks->a, stacks->b); // Change argument to t_stacks
+	ft_del_all(&stacks);
 	return (0);
 }
 
