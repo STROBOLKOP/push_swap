@@ -6,7 +6,7 @@
 /*   By: efret <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/25 12:39:58 by efret             #+#    #+#             */
-/*   Updated: 2024/01/31 19:55:11 by elias            ###   ########.fr       */
+/*   Updated: 2024/01/31 20:32:48 by elias            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -126,7 +126,7 @@ void	ft_stack_print(t_stack *stack)
 	ft_printf("\n");
 }
 
-void	ft_display_stacks(t_stack *a, t_stack *b)
+void	ft_display_stacks(t_stacks *stacks)
 {
 	size_t			size_diff;
 	t_stack_node	*iter_a;
@@ -134,12 +134,12 @@ void	ft_display_stacks(t_stack *a, t_stack *b)
 	size_t			min_size;
 
 	ft_printf("----------\n");
-	iter_a = a->head;
-	iter_b = b->head;
-	if (a->len > b->len)
+	iter_a = stacks->a->head;
+	iter_b = stacks->b->head;
+	if (stacks->a->len > stacks->b->len)
 	{
-		size_diff = a->len - b->len;
-		min_size = b->len;
+		size_diff = stacks->a->len - stacks->b->len;
+		min_size = stacks->b->len;
 		while (size_diff--)
 		{
 			ft_printf(" %d\n", iter_a->value);
@@ -148,8 +148,8 @@ void	ft_display_stacks(t_stack *a, t_stack *b)
 	}
 	else
 	{
-		size_diff = b->len - a->len;
-		min_size = a->len;
+		size_diff = stacks->b->len - stacks->a->len;
+		min_size = stacks->a->len;
 		while (size_diff--)
 		{
 			ft_printf(" \t%d\n", iter_b->value);
@@ -277,16 +277,16 @@ void	ft_stacks_pb(t_stack *a, t_stack *b)
 	ft_printf("pb\n");
 }
 
-int	ft_check_sorted(t_stack *a, t_stack *b)
+int	ft_check_sorted(t_stacks *stacks)
 {
 	t_stack_node	*iter;
 
-	if (!a || !b || (!a->len && !b->len)) // maybe change check for both being empty, we shouldn't be in this funcion if there is no input. Or change the exit status.
+	if (!stacks->a || !stacks->b || (!stacks->a->len && !stacks->b->len)) // maybe change check for both being empty, we shouldn't be in this funcion if there is no input. Or change the exit status.
 		return (-1);
-	if (b->len)
+	if (stacks->b->len)
 		return (0);
-	iter = a->head;
-	while (iter->next != a->head)
+	iter = stacks->a->head;
+	while (iter->next != stacks->a->head)
 	{
 		if (iter->value > iter->next->value)
 			return (0);
@@ -295,7 +295,7 @@ int	ft_check_sorted(t_stack *a, t_stack *b)
 	return (1);
 }
 
-void	ft_stacks_interactive(t_stack *a, t_stack *b)
+void	ft_stacks_interactive(t_stacks *stacks)
 {
 	char	*line;
 
@@ -309,30 +309,30 @@ void	ft_stacks_interactive(t_stack *a, t_stack *b)
 			return ;
 		}
 		if (!ft_strncmp(line, "sa\n", 3) && ft_strlen(line) == 3)
-			ft_stacks_sa(a, b);
+			ft_stacks_sa(stacks->a, stacks->b);
 		else if (!ft_strncmp(line, "sb\n", 3) && ft_strlen(line) == 3)
-			ft_stacks_sb(a, b);
+			ft_stacks_sb(stacks->a, stacks->b);
 		else if (!ft_strncmp(line, "ss\n", 3) && ft_strlen(line) == 3)
-			ft_stacks_ss(a, b);
+			ft_stacks_ss(stacks->a, stacks->b);
 		else if (!ft_strncmp(line, "ra\n", 3) && ft_strlen(line) == 3)
-			ft_stacks_ra(a, b);
+			ft_stacks_ra(stacks->a, stacks->b);
 		else if (!ft_strncmp(line, "rb\n", 3) && ft_strlen(line) == 3)
-			ft_stacks_rb(a, b);
+			ft_stacks_rb(stacks->a, stacks->b);
 		else if (!ft_strncmp(line, "rr\n", 3) && ft_strlen(line) == 3)
-			ft_stacks_rr(a, b);
+			ft_stacks_rr(stacks->a, stacks->b);
 		else if (!ft_strncmp(line, "rra\n", 4) && ft_strlen(line) == 4)
-			ft_stacks_rra(a, b);
+			ft_stacks_rra(stacks->a, stacks->b);
 		else if (!ft_strncmp(line, "rrb\n", 4) && ft_strlen(line) == 4)
-			ft_stacks_rrb(a, b);
+			ft_stacks_rrb(stacks->a, stacks->b);
 		else if (!ft_strncmp(line, "rrr\n", 4) && ft_strlen(line) == 4)
-			ft_stacks_rrr(a, b);
+			ft_stacks_rrr(stacks->a, stacks->b);
 		else if (!ft_strncmp(line, "pa\n", 3) && ft_strlen(line) == 3)
-			ft_stacks_pa(a, b);
+			ft_stacks_pa(stacks->a, stacks->b);
 		else if (!ft_strncmp(line, "pb\n", 3) && ft_strlen(line) == 3)
-			ft_stacks_pb(a, b);
+			ft_stacks_pb(stacks->a, stacks->b);
 		free(line);
-		ft_display_stacks(a, b);
-		if (ft_check_sorted(a, b))
+		ft_display_stacks(stacks);
+		if (ft_check_sorted(stacks))
 		{
 			ft_printf("Good job sorting!\n");
 			return ;
@@ -413,31 +413,6 @@ t_stacks	*ft_init_stacks(void)
 
 int	main(int argc, char **argv)
 {
-	/*
-	t_stack *a = ft_calloc(1, sizeof(t_stack));
-	//ft_stackadd_front(a, 3);
-	//ft_stackadd_front(a, 4);
-	//ft_stackadd_front(a, 1);
-	//ft_stackadd_front(a, 2);
-	//ft_stackadd_back(a, 5);
-	//ft_stackadd_back(a, 1);
-	//ft_stackadd_back(a, 3);
-	//ft_stackadd_back(a, 4);
-	//ft_stackadd_back(a, 2);
-	//ft_stack_print(a);
-
-	t_stack *b = ft_calloc(1, sizeof(t_stack));
-	//ft_stack_print(b);
-	ft_display_stacks(a, b);
-
-	if (ft_check_sorted(a, b))
-		ft_printf("Good job sorting!\nWait a minute... The input was already sorted!\n");
-	else
-		ft_stacks_interactive(a, b);
-	ft_stackdel(&a);
-	ft_stackdel(&b);
-	*/
-
 	if (argc < 2)
 	{
 		ft_printf("Give me some arguments.\n"); // delete later.
@@ -448,11 +423,11 @@ int	main(int argc, char **argv)
 
 	stacks = ft_init_stacks();
 	ft_check_input(stacks, argc - 1, &argv[1]);
-	ft_display_stacks(stacks->a, stacks->b); // Change argument to t_stacks
-	if (ft_check_sorted(stacks->a, stacks->b)) // Change arg to t_stacks
+	ft_display_stacks(stacks);
+	if (ft_check_sorted(stacks))
 		ft_printf("Good job sorting!\nWait a minute... The input was already sorted!\n");
 	else
-		ft_stacks_interactive(stacks->a, stacks->b);// Change arg to t_stacks
+		ft_stacks_interactive(stacks);
 	ft_del_all(&stacks);
 	return (0);
 }
