@@ -6,7 +6,7 @@
 /*   By: elias <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 12:57:09 by elias             #+#    #+#             */
-/*   Updated: 2024/02/01 16:20:44 by elias            ###   ########.fr       */
+/*   Updated: 2024/02/01 18:08:50 by elias            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,12 +81,8 @@ void	ft_stacks_interactive(t_stacks *stacks)
 	while (1)
 	{
 		line = get_next_line(0);
-		if (!line || (!ft_strncmp(line, "q\n", 2) && ft_strlen(line) == 2))
-		{
-			if (line)
-				return (free(line));
+		if (!line)
 			return ;
-		}
 		if (!ft_strncmp(line, "sa\n", 3) && ft_strlen(line) == 3)
 			ft_stacks_sa(stacks);
 		else if (!ft_strncmp(line, "sb\n", 3) && ft_strlen(line) == 3)
@@ -109,12 +105,12 @@ void	ft_stacks_interactive(t_stacks *stacks)
 			ft_stacks_pa(stacks);
 		else if (!ft_strncmp(line, "pb\n", 3) && ft_strlen(line) == 3)
 			ft_stacks_pb(stacks);
+		else
+		{
+			free(line);
+			ft_exit_handler(stacks, E_INVALID_INPUT);
+		}
 		free(line);
 		ft_display_stacks(stacks);
-		if (ft_check_sorted(stacks))
-		{
-			ft_printf("Good job sorting!\n");
-			return ;
-		}
 	}
 }

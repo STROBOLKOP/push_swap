@@ -1,16 +1,15 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   push_swap_main.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: efret <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/25 12:39:58 by efret             #+#    #+#             */
-/*   Updated: 2024/02/01 16:04:21 by elias            ###   ########.fr       */
+/*   Updated: 2024/02/01 18:10:34 by elias            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../libft/incl/libft.h"
 #include "../push_swap.h"
 
 int	main(int argc, char **argv)
@@ -18,17 +17,10 @@ int	main(int argc, char **argv)
 	t_stacks	*stacks;
 
 	if (argc < 2)
-	{
-		ft_printf("Give me some arguments.\n"); // delete later.
 		return (0);
-	}
 	stacks = ft_init_stacks();
 	ft_check_input(stacks, argc - 1, &argv[1]);
-	ft_display_stacks(stacks);
-	if (ft_check_sorted(stacks))
-		ft_printf("The input was already sorted!\n");
-	else
-		ft_stacks_interactive(stacks);
+	ft_printf("sa\n");
 	ft_del_all(&stacks);
 	return (0);
 }

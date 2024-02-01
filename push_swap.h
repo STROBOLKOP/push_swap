@@ -6,7 +6,7 @@
 /*   By: efret <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 11:25:11 by efret             #+#    #+#             */
-/*   Updated: 2024/02/01 16:13:00 by elias            ###   ########.fr       */
+/*   Updated: 2024/02/01 17:16:18 by elias            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ typedef struct s_stacks
 enum exit_code {
 	E_SUCCES,
 	E_ERROR,
+	E_MALLOC_FAILURE,
 	E_INVALID_INPUT,
 	E_UNEXPECTED_ERROR,
 	E_DUPLICATE_VALUE
