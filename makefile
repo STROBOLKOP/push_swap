@@ -6,7 +6,7 @@
 #    By: efret <marvin@42.fr>                       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/23 11:05:01 by efret             #+#    #+#              #
-#    Updated: 2024/01/25 14:46:22 by efret            ###   ########.fr        #
+#    Updated: 2024/02/01 13:15:45 by elias            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,9 @@ CC = cc
 CFLAGS = -Wall -Wextra -Werror
 CFLAGS += -g
 
-SRCS = $(wildcard *.c)
+SRCS = $(wildcard src/*.c)\
+	   $(wildcard src/utils/*.c)\
+	   $(wildcard src/commands/*.c)
 
 RESET = \e[0m
 GREEN = \e[38;5;40m
