@@ -387,6 +387,27 @@ int	ft_is_number(const char *s)
 	return (1);
 }
 
+void	ft_check_duplicates(t_stacks *stacks)
+{
+	t_stack_node	*start;
+	t_stack_node	*iter;
+
+	if (!stacks)
+		ft_exit_handler(stacks, E_UNEXPECTED_ERROR);
+	start = stacks->a->head;
+	while (start != stacks->a->last)
+	{
+		iter = start->next;
+		while (iter != stacks->a->head)
+		{
+			if (start->value == iter->value)
+				ft_exit_handler(stacks, E_DUPLICATE_VALUE);
+			iter = iter->next;
+		}
+		start = start->next;
+	}
+}
+
 void	ft_check_input(t_stacks *stacks, int argc, char **argv)
 {
 	int	i;
@@ -399,6 +420,7 @@ void	ft_check_input(t_stacks *stacks, int argc, char **argv)
 		ft_stackadd_back(stacks->a, ft_atoi_ofc(stacks, argv[i]));
 		i++;
 	}
+	ft_check_duplicates(stacks);
 }
 
 t_stacks	*ft_init_stacks(void)

@@ -6,7 +6,7 @@
 /*   By: efret <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 11:25:11 by efret             #+#    #+#             */
-/*   Updated: 2024/01/31 18:49:41 by elias            ###   ########.fr       */
+/*   Updated: 2024/02/01 11:59:04 by elias            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,8 @@ enum exit_code {
 	E_SUCCES,
 	E_ERROR,
 	E_INVALID_INPUT,
-	E_UNEXPECTED_ERROR
+	E_UNEXPECTED_ERROR,
+	E_DUPLICATE_VALUE
 };
 
 #endif
