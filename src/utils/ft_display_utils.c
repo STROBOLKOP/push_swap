@@ -6,7 +6,7 @@
 /*   By: elias <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 12:57:09 by elias             #+#    #+#             */
-/*   Updated: 2024/02/01 13:00:39 by elias            ###   ########.fr       */
+/*   Updated: 2024/02/01 16:20:44 by elias            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,27 +88,27 @@ void	ft_stacks_interactive(t_stacks *stacks)
 			return ;
 		}
 		if (!ft_strncmp(line, "sa\n", 3) && ft_strlen(line) == 3)
-			ft_stacks_sa(stacks->a, stacks->b);
+			ft_stacks_sa(stacks);
 		else if (!ft_strncmp(line, "sb\n", 3) && ft_strlen(line) == 3)
-			ft_stacks_sb(stacks->a, stacks->b);
+			ft_stacks_sb(stacks);
 		else if (!ft_strncmp(line, "ss\n", 3) && ft_strlen(line) == 3)
-			ft_stacks_ss(stacks->a, stacks->b);
+			ft_stacks_ss(stacks);
 		else if (!ft_strncmp(line, "ra\n", 3) && ft_strlen(line) == 3)
-			ft_stacks_ra(stacks->a, stacks->b);
+			ft_stacks_ra(stacks);
 		else if (!ft_strncmp(line, "rb\n", 3) && ft_strlen(line) == 3)
-			ft_stacks_rb(stacks->a, stacks->b);
+			ft_stacks_rb(stacks);
 		else if (!ft_strncmp(line, "rr\n", 3) && ft_strlen(line) == 3)
-			ft_stacks_rr(stacks->a, stacks->b);
+			ft_stacks_rr(stacks);
 		else if (!ft_strncmp(line, "rra\n", 4) && ft_strlen(line) == 4)
-			ft_stacks_rra(stacks->a, stacks->b);
+			ft_stacks_rra(stacks);
 		else if (!ft_strncmp(line, "rrb\n", 4) && ft_strlen(line) == 4)
-			ft_stacks_rrb(stacks->a, stacks->b);
+			ft_stacks_rrb(stacks);
 		else if (!ft_strncmp(line, "rrr\n", 4) && ft_strlen(line) == 4)
-			ft_stacks_rrr(stacks->a, stacks->b);
+			ft_stacks_rrr(stacks);
 		else if (!ft_strncmp(line, "pa\n", 3) && ft_strlen(line) == 3)
-			ft_stacks_pa(stacks->a, stacks->b);
+			ft_stacks_pa(stacks);
 		else if (!ft_strncmp(line, "pb\n", 3) && ft_strlen(line) == 3)
-			ft_stacks_pb(stacks->a, stacks->b);
+			ft_stacks_pb(stacks);
 		free(line);
 		ft_display_stacks(stacks);
 		if (ft_check_sorted(stacks))

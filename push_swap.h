@@ -6,7 +6,7 @@
 /*   By: efret <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 11:25:11 by efret             #+#    #+#             */
-/*   Updated: 2024/02/01 13:10:03 by elias            ###   ########.fr       */
+/*   Updated: 2024/02/01 16:13:00 by elias            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,19 +64,19 @@ void	ft_check_input(t_stacks *stacks, int argc, char **argv);
 
 void	ft_exit_handler(t_stacks *stacks, int exit_code);
 
-void	ft_stacks_sa(t_stack *a, t_stack *b);
-void	ft_stacks_sb(t_stack *a, t_stack *b);
-void	ft_stacks_ss(t_stack *a, t_stack *b);
+void	ft_stacks_sa(t_stacks *stacks);
+void	ft_stacks_sb(t_stacks *stacks);
+void	ft_stacks_ss(t_stacks *stacks);
 
-void	ft_stacks_ra(t_stack *a, t_stack *b);
-void	ft_stacks_rb(t_stack *a, t_stack *b);
-void	ft_stacks_rr(t_stack *a, t_stack *b);
+void	ft_stacks_ra(t_stacks *stacks);
+void	ft_stacks_rb(t_stacks *stacks);
+void	ft_stacks_rr(t_stacks *stacks);
 
-void	ft_stacks_rra(t_stack *a, t_stack *b);
-void	ft_stacks_rrb(t_stack *a, t_stack *b);
-void	ft_stacks_rrr(t_stack *a, t_stack *b);
+void	ft_stacks_rra(t_stacks *stacks);
+void	ft_stacks_rrb(t_stacks *stacks);
+void	ft_stacks_rrr(t_stacks *stacks);
 
-void	ft_stacks_pa(t_stack *a, t_stack *b);
-void	ft_stacks_pb(t_stack *a, t_stack *b);
+void	ft_stacks_pa(t_stacks *stacks);
+void	ft_stacks_pb(t_stacks *stacks);
 
 #endif

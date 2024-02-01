@@ -6,35 +6,33 @@
 /*   By: elias <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 13:06:33 by elias             #+#    #+#             */
-/*   Updated: 2024/02/01 13:06:45 by elias            ###   ########.fr       */
+/*   Updated: 2024/02/01 16:18:22 by elias            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../libft/incl/libft.h"
 #include "../../push_swap.h"
 
-void	ft_stacks_ra(t_stack *a, t_stack *b)
+void	ft_stacks_ra(t_stacks *stacks)
 {
-	(void)b;
-	if (!a || a->len <= 1)
+	if (!stacks->a || stacks->a->len <= 1)
 		return ;
-	a->last = a->head;
-	a->head = a->head->next;
+	stacks->a->last = stacks->a->head;
+	stacks->a->head = stacks->a->head->next;
 	ft_printf("ra\n");
 }
 
-void	ft_stacks_rb(t_stack *a, t_stack *b)
+void	ft_stacks_rb(t_stacks *stacks)
 {
-	(void)a;
-	if (!b || b->len <= 1)
+	if (!stacks->b || stacks->b->len <= 1)
 		return ;
-	b->last = b->head;
-	b->head = b->head->next;
+	stacks->b->last = stacks->b->head;
+	stacks->b->head = stacks->b->head->next;
 	ft_printf("rb\n");
 }
 
-void	ft_stacks_rr(t_stack *a, t_stack *b)
+void	ft_stacks_rr(t_stacks *stacks)
 {
-	ft_stacks_ra(a, b);
-	ft_stacks_rb(a, b);
+	ft_stacks_ra(stacks);
+	ft_stacks_rb(stacks);
 }

@@ -6,41 +6,39 @@
 /*   By: elias <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 13:04:58 by elias             #+#    #+#             */
-/*   Updated: 2024/02/01 13:05:28 by elias            ###   ########.fr       */
+/*   Updated: 2024/02/01 16:17:05 by elias            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../libft/incl/libft.h"
 #include "../../push_swap.h"
 
-void	ft_stacks_sa(t_stack *a, t_stack *b)
+void	ft_stacks_sa(t_stacks *stacks)
 {
 	int	tmp;
 
-	(void)b;
-	if (!a || a->len <= 1)
+	if (!stacks->a || stacks->a->len <= 1)
 		return ;
-	tmp = a->head->value;
-	a->head->value = a->head->next->value;
-	a->head->next->value = tmp;
+	tmp = stacks->a->head->value;
+	stacks->a->head->value = stacks->a->head->next->value;
+	stacks->a->head->next->value = tmp;
 	ft_printf("sa\n");
 }
 
-void	ft_stacks_sb(t_stack *a, t_stack *b)
+void	ft_stacks_sb(t_stacks *stacks)
 {
 	int	tmp;
 
-	(void)a;
-	if (!b || b->len <= 1)
+	if (!stacks->b || stacks->b->len <= 1)
 		return ;
-	tmp = b->head->value;
-	b->head->value = b->head->next->value;
-	b->head->next->value = tmp;
+	tmp = stacks->b->head->value;
+	stacks->b->head->value = stacks->b->head->next->value;
+	stacks->b->head->next->value = tmp;
 	ft_printf("sb\n");
 }
 
-void	ft_stacks_ss(t_stack *a, t_stack *b)
+void	ft_stacks_ss(t_stacks *stacks)
 {
-	ft_stacks_sa(a, b);
-	ft_stacks_sb(a, b);
+	ft_stacks_sa(stacks);
+	ft_stacks_sb(stacks);
 }

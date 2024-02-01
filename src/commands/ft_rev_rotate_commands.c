@@ -6,45 +6,43 @@
 /*   By: elias <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 13:07:34 by elias             #+#    #+#             */
-/*   Updated: 2024/02/01 13:09:04 by elias            ###   ########.fr       */
+/*   Updated: 2024/02/01 16:19:24 by elias            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../libft/incl/libft.h"
 #include "../../push_swap.h"
 
-void	ft_stacks_rra(t_stack *a, t_stack *b)
+void	ft_stacks_rra(t_stacks *stacks)
 {
 	t_stack_node	*tmp;
 
-	(void)b;
-	if (!a || a->len <= 1)
+	if (!stacks->a || stacks->a->len <= 1)
 		return ;
-	tmp = a->head;
-	while (tmp->next != a->last)
+	tmp = stacks->a->head;
+	while (tmp->next != stacks->a->last)
 		tmp = tmp->next;
-	a->head = a->last;
-	a->last = tmp;
+	stacks->a->head = stacks->a->last;
+	stacks->a->last = tmp;
 	ft_printf("rra\n");
 }
 
-void	ft_stacks_rrb(t_stack *a, t_stack *b)
+void	ft_stacks_rrb(t_stacks *stacks)
 {
 	t_stack_node	*tmp;
 
-	(void)a;
-	if (!b || b->len <= 1)
+	if (!stacks->b || stacks->b->len <= 1)
 		return ;
-	tmp = b->head;
-	while (tmp->next != b->last)
+	tmp = stacks->b->head;
+	while (tmp->next != stacks->b->last)
 		tmp = tmp->next;
-	b->head = b->last;
-	b->last = tmp;
+	stacks->b->head = stacks->b->last;
+	stacks->b->last = tmp;
 	ft_printf("rrb\n");
 }
 
-void	ft_stacks_rrr(t_stack *a, t_stack *b)
+void	ft_stacks_rrr(t_stacks *stacks)
 {
-	ft_stacks_rra(a, b);
-	ft_stacks_rrb(a, b);
+	ft_stacks_rra(stacks);
+	ft_stacks_rrb(stacks);
 }

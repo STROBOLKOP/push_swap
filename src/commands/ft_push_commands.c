@@ -6,27 +6,27 @@
 /*   By: elias <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 13:09:16 by elias             #+#    #+#             */
-/*   Updated: 2024/02/01 13:09:37 by elias            ###   ########.fr       */
+/*   Updated: 2024/02/01 16:14:53 by elias            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../libft/incl/libft.h"
 #include "../../push_swap.h"
 
-void	ft_stacks_pa(t_stack *a, t_stack *b)
+void	ft_stacks_pa(t_stacks *stacks)
 {
-	if (!a || !b || !b->len)
+	if (!stacks->a || !stacks->b || !stacks->b->len)
 		return ;
-	ft_stackadd_front(a, b->head->value);
-	ft_stackdel_front(b);
+	ft_stackadd_front(stacks->a, stacks->b->head->value);
+	ft_stackdel_front(stacks->b);
 	ft_printf("pa\n");
 }
 
-void	ft_stacks_pb(t_stack *a, t_stack *b)
+void	ft_stacks_pb(t_stacks *stacks)
 {
-	if (!a || !b || !a->len)
+	if (!stacks->a || !stacks->b || !stacks->a->len)
 		return ;
-	ft_stackadd_front(b, a->head->value);
-	ft_stackdel_front(a);
+	ft_stackadd_front(stacks->b, stacks->a->head->value);
+	ft_stackdel_front(stacks->a);
 	ft_printf("pb\n");
 }
