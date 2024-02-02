@@ -6,38 +6,38 @@
 /*   By: elias <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 13:07:34 by elias             #+#    #+#             */
-/*   Updated: 2024/02/01 16:19:24 by elias            ###   ########.fr       */
+/*   Updated: 2024/02/02 17:19:39 by elias            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../libft/incl/libft.h"
 #include "../../push_swap.h"
 
-void	ft_stacks_rra(t_stacks *stacks)
+int	ft_stack_rev_rot(t_stack *stack)
 {
 	t_stack_node	*tmp;
 
-	if (!stacks->a || stacks->a->len <= 1)
-		return ;
-	tmp = stacks->a->head;
-	while (tmp->next != stacks->a->last)
+	if (!stack || stack->len <= 1)
+		return (E_UNEXPECTED_ERROR);
+	tmp = stack->head;
+	while(tmp->next != stack->last)
 		tmp = tmp->next;
-	stacks->a->head = stacks->a->last;
-	stacks->a->last = tmp;
+	stack->head = stack->last;
+	stack->last = tmp;
+	return (0);
+}
+
+void	ft_stacks_rra(t_stacks *stacks)
+{
+	if (ft_stack_rev_rot(stacks->a))
+		ft_exit_handler(stacks, E_UNEXPECTED_ERROR);
 	ft_printf("rra\n");
 }
 
 void	ft_stacks_rrb(t_stacks *stacks)
 {
-	t_stack_node	*tmp;
-
-	if (!stacks->b || stacks->b->len <= 1)
-		return ;
-	tmp = stacks->b->head;
-	while (tmp->next != stacks->b->last)
-		tmp = tmp->next;
-	stacks->b->head = stacks->b->last;
-	stacks->b->last = tmp;
+	if (ft_stack_rev_rot(stacks->b))
+		ft_exit_handler(stacks, E_UNEXPECTED_ERROR);
 	ft_printf("rrb\n");
 }
 

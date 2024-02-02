@@ -6,7 +6,7 @@
 #    By: efret <marvin@42.fr>                       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/23 11:05:01 by efret             #+#    #+#              #
-#    Updated: 2024/02/01 17:32:49 by elias            ###   ########.fr        #
+#    Updated: 2024/02/02 16:13:59 by elias            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,8 @@ CFLAGS += -g
 
 SRCS_COMMON = $(wildcard src/utils/*.c)\
 			  $(wildcard src/commands/*.c)
-SRCS = src/push_swap_main.c ${SRCS_COMMON}
+SRCS = src/push_swap_main.c ${SRCS_COMMON}\
+	   $(wildcard src/algorithm/*.c)
 SRCS_BONUS = src/checker_main.c ${SRCS_COMMON}\
 			 $(wildcard src/bonus/*.c)
 

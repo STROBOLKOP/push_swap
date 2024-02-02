@@ -6,28 +6,33 @@
 /*   By: elias <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 13:06:33 by elias             #+#    #+#             */
-/*   Updated: 2024/02/01 16:18:22 by elias            ###   ########.fr       */
+/*   Updated: 2024/02/02 16:05:59 by elias            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../libft/incl/libft.h"
 #include "../../push_swap.h"
 
+int	ft_stack_rot(t_stack *stack)
+{
+	if (!stack || stack->len <= 1)
+		return (E_UNEXPECTED_ERROR);
+	stack->last = stack->head;
+	stack->head = stack->head->next;
+	return (E_SUCCES);
+}
+
 void	ft_stacks_ra(t_stacks *stacks)
 {
-	if (!stacks->a || stacks->a->len <= 1)
-		return ;
-	stacks->a->last = stacks->a->head;
-	stacks->a->head = stacks->a->head->next;
+	if (ft_stack_rot(stacks->a))
+		ft_exit_handler(stacks, E_UNEXPECTED_ERROR);
 	ft_printf("ra\n");
 }
 
 void	ft_stacks_rb(t_stacks *stacks)
 {
-	if (!stacks->b || stacks->b->len <= 1)
-		return ;
-	stacks->b->last = stacks->b->head;
-	stacks->b->head = stacks->b->head->next;
+	if (ft_stack_rot(stacks->b))
+		ft_exit_handler(stacks, E_UNEXPECTED_ERROR);
 	ft_printf("rb\n");
 }
 

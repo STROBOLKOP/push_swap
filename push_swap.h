@@ -6,7 +6,7 @@
 /*   By: efret <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 11:25:11 by efret             #+#    #+#             */
-/*   Updated: 2024/02/01 17:16:18 by elias            ###   ########.fr       */
+/*   Updated: 2024/02/02 17:16:42 by elias            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,10 +69,12 @@ void	ft_stacks_sa(t_stacks *stacks);
 void	ft_stacks_sb(t_stacks *stacks);
 void	ft_stacks_ss(t_stacks *stacks);
 
+int	ft_stack_rot(t_stack *stack);
 void	ft_stacks_ra(t_stacks *stacks);
 void	ft_stacks_rb(t_stacks *stacks);
 void	ft_stacks_rr(t_stacks *stacks);
 
+int	ft_stack_rev_rot(t_stack *stack);
 void	ft_stacks_rra(t_stacks *stacks);
 void	ft_stacks_rrb(t_stacks *stacks);
 void	ft_stacks_rrr(t_stacks *stacks);
@@ -80,4 +82,6 @@ void	ft_stacks_rrr(t_stacks *stacks);
 void	ft_stacks_pa(t_stacks *stacks);
 void	ft_stacks_pb(t_stacks *stacks);
 
+void	ft_rot_smallest_top(t_stack *stack);
+void	ft_simplest_solve(t_stacks *stacks);
 #endif
