@@ -54,7 +54,7 @@ t_stacks	*ft_init_stacks(void);
 
 void	ft_stack_print(t_stack *stack);
 void	ft_display_stacks(t_stacks *stacks);
-void	ft_stacks_interactive(t_stacks *stacks);
+size_t	ft_stacks_interactive(t_stacks *stacks);
 
 int	ft_atoi_ofc(t_stacks *stacks, const char *nptr);
 

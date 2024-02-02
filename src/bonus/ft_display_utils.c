@@ -6,7 +6,7 @@
 /*   By: elias <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 12:57:09 by elias             #+#    #+#             */
-/*   Updated: 2024/02/01 18:08:50 by elias            ###   ########.fr       */
+/*   Updated: 2024/02/02 16:51:53 by elias            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,15 +74,17 @@ void	ft_display_stacks(t_stacks *stacks)
 	ft_printf(" _\t_\n a\tb\n");
 }
 
-void	ft_stacks_interactive(t_stacks *stacks)
+size_t	ft_stacks_interactive(t_stacks *stacks)
 {
 	char	*line;
+	size_t	count;
 
+	count = 0;
 	while (1)
 	{
 		line = get_next_line(0);
 		if (!line)
-			return ;
+			return (count);
 		if (!ft_strncmp(line, "sa\n", 3) && ft_strlen(line) == 3)
 			ft_stacks_sa(stacks);
 		else if (!ft_strncmp(line, "sb\n", 3) && ft_strlen(line) == 3)
@@ -111,6 +113,8 @@ void	ft_stacks_interactive(t_stacks *stacks)
 			ft_exit_handler(stacks, E_INVALID_INPUT);
 		}
 		free(line);
-		ft_display_stacks(stacks);
+		//ft_display_stacks(stacks);
+		count++;
 	}
+	return (count);
 }
