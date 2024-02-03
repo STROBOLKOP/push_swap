@@ -6,7 +6,7 @@
 /*   By: elias <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 12:57:09 by elias             #+#    #+#             */
-/*   Updated: 2024/02/02 16:51:53 by elias            ###   ########.fr       */
+/*   Updated: 2024/02/03 13:28:36 by elias            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,7 +113,8 @@ size_t	ft_stacks_interactive(t_stacks *stacks)
 			ft_exit_handler(stacks, E_INVALID_INPUT);
 		}
 		free(line);
-		//ft_display_stacks(stacks);
+		if (DEBUG)
+			ft_display_stacks(stacks);
 		count++;
 	}
 	return (count);

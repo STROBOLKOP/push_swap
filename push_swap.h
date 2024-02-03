@@ -6,13 +6,16 @@
 /*   By: efret <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 11:25:11 by efret             #+#    #+#             */
-/*   Updated: 2024/02/02 17:16:42 by elias            ###   ########.fr       */
+/*   Updated: 2024/02/03 13:16:25 by elias            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 # include "libft/incl/libft.h"
+# ifndef DEBUG
+#  define DEBUG 0
+# endif
 
 typedef struct s_stack_node
 {

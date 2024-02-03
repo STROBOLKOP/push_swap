@@ -6,7 +6,7 @@
 #    By: efret <marvin@42.fr>                       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/23 11:05:01 by efret             #+#    #+#              #
-#    Updated: 2024/02/02 16:13:59 by elias            ###   ########.fr        #
+#    Updated: 2024/02/03 13:41:53 by elias            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,19 +31,31 @@ YELLOW = \e[33m
 UP = \e[F
 CLEAR_LINE = \e[2K\r
 
-all: ${NAME}
-
 ${NAME}: ${LIBFT}/${LIBFT}.a ${SRCS}
 	@echo -n "${YELLOW}"
 	${CC} ${CFLAGS} ${SRCS} ${LIBFT}/${LIBFT}.a -o ${NAME}
-	@echo "${GREEN}${NAME} Done compiling.${RESET}"
+	@echo "${GREEN}$@ Done compiling.${RESET}"
 
 bonus: ${NAME_BONUS}
 
 ${NAME_BONUS}: ${LIBFT}/${LIBFT}.a ${SRCS_BONUS}
 	@echo -n "${YELLOW}"
 	${CC} ${CFLAGS} ${SRCS_BONUS} ${LIBFT}/${LIBFT}.a -o ${NAME_BONUS}
-	@echo "${GREEN}${NAME_BONUS} Done compiling.${RESET}"
+	@echo "${GREEN}$@ Done compiling.${RESET}"
+
+all: ${NAME} ${NAME_BONUS}
+
+${NAME}_debug: ${LIBFT}/${LIBFT}.a ${SRCS}
+	@echo -n "${YELLOW}"
+	${CC} ${CFLAGS} -D DEBUG=1 ${SRCS} ${LIBFT}/${LIBFT}.a -o ${NAME}_debug
+	@echo "${GREEN}$@ Done compiling.${RESET}"
+	
+${NAME_BONUS}_debug: ${LIBFT}/${LIBFT}.a ${SRCS_BONUS}
+	@echo -n "${YELLOW}"
+	${CC} ${CFLAGS} -D DEBUG=1 ${SRCS_BONUS} ${LIBFT}/${LIBFT}.a -o ${NAME_BONUS}_debug
+	@echo "${GREEN}$@ Done compiling.${RESET}"
+
+debug: ${NAME}_debug ${NAME_BONUS}_debug
 
 ${LIBFT}/${LIBFT}.a:
 	@make -sC ${LIBFT}
@@ -59,4 +71,6 @@ re: fclean all
 
 rebonus: fclean bonus
 
-.PHONY: all clean fclean re bonus rebonus
+redebug: fclean debug
+
+.PHONY: all clean fclean re bonus rebonus debug redebug
