@@ -37,7 +37,7 @@ typedef struct s_stacks
 	size_t	count;
 }	t_stacks;
 
-enum exit_code {
+enum e_exit_code {
 	E_SUCCES,
 	E_ERROR,
 	E_MALLOC_FAILURE,
