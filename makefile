@@ -6,7 +6,7 @@
 #    By: efret <marvin@42.fr>                       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/23 11:05:01 by efret             #+#    #+#              #
-#    Updated: 2024/02/03 13:41:53 by elias            ###   ########.fr        #
+#    Updated: 2024/02/04 14:15:40 by elias            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -66,6 +66,8 @@ clean:
 fclean: clean
 	@rm -rf ${NAME}
 	@rm -rf ${NAME_BONUS}
+	@rm -rf ${NAME}_debug
+	@rm -rf ${NAME_BONUS}_debug
 
 re: fclean all
 
