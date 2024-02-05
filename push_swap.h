@@ -6,7 +6,7 @@
 /*   By: efret <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 11:25:11 by efret             #+#    #+#             */
-/*   Updated: 2024/02/03 13:16:25 by elias            ###   ########.fr       */
+/*   Updated: 2024/02/05 14:25:37 by efret            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ typedef struct s_stack_node
 {
 	int					value;
 	struct s_stack_node	*next;
+	struct s_stack_node	*prev;
 }						t_stack_node;
 
 typedef struct s_stack

@@ -6,7 +6,7 @@
 /*   By: elias <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 12:36:33 by elias             #+#    #+#             */
-/*   Updated: 2024/02/01 16:38:40 by elias            ###   ########.fr       */
+/*   Updated: 2024/02/05 14:45:17 by efret            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@ t_stack_node	*ft_new_stack_node(int value)
 	if (!new_node)
 		return (NULL);
 	new_node->value = value;
-	new_node->next = NULL;
 	return (new_node);
 }
 
@@ -39,7 +38,10 @@ void	ft_stackdel_front(t_stack *stack)
 		return ;
 	}
 	stack->head = tmp->next;
+	stack->head->prev = stack->last;
 	stack->last->next = stack->head;
+	if (stack->len == 1)
+		stack->last->prev = stack->head;
 	free(tmp);
 	return ; // TODO
 }
@@ -62,15 +64,17 @@ void	ft_stackadd_front(t_stack *stack, int value)
 	tmp = ft_new_stack_node(value);
 	if (!tmp)
 		return (ft_stackdel_front(stack));
-	if (stack->len == 0)
+	if (!stack->len)
 	{
 		stack->head = tmp;
 		tmp->next = tmp;
+		tmp->prev = tmp;
 		stack->last = tmp;
 	}
 	if (stack->len)
 	{
 		tmp->next = stack->head;
+		tmp->prev = stack->last;
 		stack->head = tmp;
 	}
 	stack->last->next = stack->head;
@@ -88,7 +92,9 @@ void	ft_stackadd_back(t_stack *stack, int value)
 		stack->head = tmp;
 	else
 		stack->last->next = tmp;
+	tmp->prev = stack->last;
 	stack->last = tmp;
 	tmp->next = stack->head;
+	stack->head->prev = tmp;
 	(stack->len)++;
 }
