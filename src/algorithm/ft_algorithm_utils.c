@@ -6,7 +6,7 @@
 /*   By: elias <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/02 15:34:38 by elias             #+#    #+#             */
-/*   Updated: 2024/02/05 17:53:31 by efret            ###   ########.fr       */
+/*   Updated: 2024/02/05 18:17:50 by efret            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,13 +60,43 @@ void	ft_rot_smallest_top(t_stack *stack)
 	}
 }
 
+int	ft_check_ordered(t_stack *stack)
+{
+	size_t			pos_smallest;
+	t_stack_node	*smallest;
+	t_stack_node	*iter;
+
+	if (!stack)
+		return (-1);
+	pos_smallest = ft_smallest_pos(stack);
+	iter = stack->head;
+	while (pos_smallest-- >= 1)
+		iter = iter->next;
+	smallest = iter;
+	while (iter->next != smallest)
+	{
+		if (iter->value > iter->next->value)
+			return (0);
+		iter = iter->next;
+	}
+	return (1);
+}
+
+void	ft_solve3(t_stacks *stacks)
+{
+	if (!ft_check_ordered(stacks->a))
+		ft_stacks_sa(stacks);
+	ft_rot_smallest_top(stacks->a);
+}
+
 void	ft_simplest_solve(t_stacks *stacks)
 {
-	while (stacks->a->len)
+	while (stacks->a->len > 3)
 	{
 		ft_rot_smallest_top(stacks->a);
 		ft_stacks_pb(stacks);
 	}
+	ft_solve3(stacks);
 	while (stacks->b->len)
 	{
 		ft_stacks_pa(stacks);
