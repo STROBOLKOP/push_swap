@@ -6,7 +6,7 @@
 /*   By: efret <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 11:25:11 by efret             #+#    #+#             */
-/*   Updated: 2024/02/05 14:25:37 by efret            ###   ########.fr       */
+/*   Updated: 2024/02/05 15:09:50 by efret            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,7 @@ void	ft_check_input(t_stacks *stacks, int argc, char **argv);
 
 void	ft_exit_handler(t_stacks *stacks, int exit_code);
 
+int	ft_stack_swap(t_stack *stack);
 void	ft_stacks_sa(t_stacks *stacks);
 void	ft_stacks_sb(t_stacks *stacks);
 void	ft_stacks_ss(t_stacks *stacks);

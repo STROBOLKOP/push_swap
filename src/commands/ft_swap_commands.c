@@ -6,34 +6,34 @@
 /*   By: elias <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 13:04:58 by elias             #+#    #+#             */
-/*   Updated: 2024/02/01 16:17:05 by elias            ###   ########.fr       */
+/*   Updated: 2024/02/05 15:06:17 by efret            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../libft/incl/libft.h"
 #include "../../push_swap.h"
 
+int	ft_stack_swap(t_stack *stack)
+{
+	int tmp;
+
+	if (!stack || stack->len <= 1)
+		return (E_UNEXPECTED_ERROR);
+	tmp = stack->head->value;
+	stack->head->value = stack->head->next->value;
+	stack->head->next->value = tmp;
+	return (E_SUCCES);
+}
+
 void	ft_stacks_sa(t_stacks *stacks)
 {
-	int	tmp;
-
-	if (!stacks->a || stacks->a->len <= 1)
-		return ;
-	tmp = stacks->a->head->value;
-	stacks->a->head->value = stacks->a->head->next->value;
-	stacks->a->head->next->value = tmp;
+	ft_stack_swap(stacks->a);
 	ft_printf("sa\n");
 }
 
 void	ft_stacks_sb(t_stacks *stacks)
 {
-	int	tmp;
-
-	if (!stacks->b || stacks->b->len <= 1)
-		return ;
-	tmp = stacks->b->head->value;
-	stacks->b->head->value = stacks->b->head->next->value;
-	stacks->b->head->next->value = tmp;
+	ft_stack_swap(stacks->b);
 	ft_printf("sb\n");
 }
 
