@@ -6,7 +6,7 @@
 /*   By: efret <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 11:25:11 by efret             #+#    #+#             */
-/*   Updated: 2024/02/05 15:09:50 by efret            ###   ########.fr       */
+/*   Updated: 2024/02/05 16:51:35 by efret            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 typedef struct s_stack_node
 {
 	int					value;
+	int					rank;
 	struct s_stack_node	*next;
 	struct s_stack_node	*prev;
 }						t_stack_node;
@@ -86,6 +87,8 @@ void	ft_stacks_rrr(t_stacks *stacks);
 
 void	ft_stacks_pa(t_stacks *stacks);
 void	ft_stacks_pb(t_stacks *stacks);
+
+int	ft_rank_stack(t_stack *stack);
 
 void	ft_rot_smallest_top(t_stack *stack);
 void	ft_simplest_solve(t_stacks *stacks);
