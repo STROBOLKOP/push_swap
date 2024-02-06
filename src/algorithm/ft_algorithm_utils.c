@@ -6,7 +6,7 @@
 /*   By: elias <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/02 15:34:38 by elias             #+#    #+#             */
-/*   Updated: 2024/02/05 18:17:50 by efret            ###   ########.fr       */
+/*   Updated: 2024/02/06 15:10:23 by efret            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,25 +80,4 @@ int	ft_check_ordered(t_stack *stack)
 		iter = iter->next;
 	}
 	return (1);
-}
-
-void	ft_solve3(t_stacks *stacks)
-{
-	if (!ft_check_ordered(stacks->a))
-		ft_stacks_sa(stacks);
-	ft_rot_smallest_top(stacks->a);
-}
-
-void	ft_simplest_solve(t_stacks *stacks)
-{
-	while (stacks->a->len > 3)
-	{
-		ft_rot_smallest_top(stacks->a);
-		ft_stacks_pb(stacks);
-	}
-	ft_solve3(stacks);
-	while (stacks->b->len)
-	{
-		ft_stacks_pa(stacks);
-	}
 }
