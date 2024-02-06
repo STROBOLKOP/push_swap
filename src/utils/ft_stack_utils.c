@@ -6,7 +6,7 @@
 /*   By: elias <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 12:36:33 by elias             #+#    #+#             */
-/*   Updated: 2024/02/05 14:45:17 by efret            ###   ########.fr       */
+/*   Updated: 2024/02/06 11:32:25 by efret            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,11 +73,12 @@ void	ft_stackadd_front(t_stack *stack, int value)
 	}
 	if (stack->len)
 	{
+		stack->head->prev = tmp;
 		tmp->next = stack->head;
 		tmp->prev = stack->last;
 		stack->head = tmp;
+		stack->last->next = tmp;
 	}
-	stack->last->next = stack->head;
 	(stack->len)++;
 }
 
