@@ -6,7 +6,7 @@
 #    By: efret <marvin@42.fr>                       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/23 11:05:01 by efret             #+#    #+#              #
-#    Updated: 2024/02/04 14:15:40 by elias            ###   ########.fr        #
+#    Updated: 2024/02/06 17:23:16 by efret            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,11 +19,12 @@ CFLAGS = -Wall -Wextra -Werror
 CFLAGS += -g
 
 SRCS_COMMON = $(wildcard src/utils/*.c)\
-			  $(wildcard src/commands/*.c)
-SRCS = src/push_swap_main.c ${SRCS_COMMON}\
-	   $(wildcard src/algorithm/*.c)
-SRCS_BONUS = src/checker_main.c ${SRCS_COMMON}\
-			 $(wildcard src/bonus/*.c)
+			  $(wildcard src/commands/*.c)\
+			  $(wildcard src/algorithm/*.c)\
+			  $(wildcard src/bonus/*.c)\
+			  $(wildcard src/debug/*.c)
+SRCS = src/push_swap_main.c ${SRCS_COMMON}
+SRCS_BONUS = src/checker_main.c ${SRCS_COMMON}
 
 RESET = \e[0m
 GREEN = \e[38;5;40m
