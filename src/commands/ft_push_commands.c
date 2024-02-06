@@ -6,7 +6,7 @@
 /*   By: elias <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 13:09:16 by elias             #+#    #+#             */
-/*   Updated: 2024/02/05 16:55:02 by efret            ###   ########.fr       */
+/*   Updated: 2024/02/06 16:57:38 by efret            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ int	ft_stack_push(t_stack *dest, t_stack *src)
 	if (!src->len)
 		return (E_SUCCES);
 	ft_stackadd_front(dest, src->head->value);
+	dest->head->rank = src->head->rank;
 	ft_stackdel_front(src);
 	return (E_SUCCES);
 }

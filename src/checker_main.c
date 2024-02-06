@@ -6,7 +6,7 @@
 /*   By: elias <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 16:47:03 by elias             #+#    #+#             */
-/*   Updated: 2024/02/05 16:54:19 by efret            ###   ########.fr       */
+/*   Updated: 2024/02/06 17:00:19 by efret            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ int	main(int argc, char **argv)
 		return (0);
 	stacks = ft_init_stacks();
 	ft_check_input(stacks, argc - 1, &argv[1]);
+	if (ft_rank_stack(stacks->a))
+		ft_exit_handler(stacks, E_UNEXPECTED_ERROR);
 	if (DEBUG)
 		ft_display_stacks(stacks);
 	count = ft_stacks_interactive(stacks);
