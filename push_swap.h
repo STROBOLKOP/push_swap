@@ -6,7 +6,7 @@
 /*   By: efret <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 11:25:11 by efret             #+#    #+#             */
-/*   Updated: 2024/02/06 15:35:35 by efret            ###   ########.fr       */
+/*   Updated: 2024/02/06 19:00:44 by efret            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,7 @@ enum e_exit_code {
 
 /* FILE: src/utils/ft_stack_utils.c */
 
+/* make a new stack node with the value set to value. */
 t_stack_node	*ft_new_stack_node(int value);
 void			ft_stackadd_front(t_stack *stack, int value);
 void			ft_stackadd_back(t_stack *stack, int value);
@@ -64,12 +65,6 @@ void			ft_stackdel(t_stack **stack);
 
 void			ft_del_all(t_stacks **stacks);
 t_stacks		*ft_init_stacks(void);
-
-/* FILE: src/bonus/ft_display_utils.c */
-
-void			ft_stack_print(t_stack *stack);
-void			ft_display_stacks(t_stacks *stacks);
-size_t			ft_stacks_interactive(t_stacks *stacks);
 
 /* FILE: src/utils/ft_atoi_ofc.c */
 
@@ -126,5 +121,16 @@ int				ft_check_ordered(t_stack *stack);
 
 void			ft_solve3(t_stacks *stacks);
 void			ft_simplest_solve(t_stacks *stacks);
+
+/* FILE: src/algoritm/ft_algorithm_utils2.c */
+size_t			ft_find_insert_pos(t_stack *stack, t_stack_node *node);
+
+/* FILE: src/bonus/ft_display_utils.c */
+size_t			ft_stacks_interactive(t_stacks *stacks);
+
+/* FILE: src/debug/ft_print_utils.c */
+void			ft_stack_print(t_stack *stack);
+void			ft_display_stacks(t_stacks *stacks);
+void			ft_print_insert_pos(t_stacks *stacks);
 
 #endif
