@@ -6,7 +6,7 @@
 /*   By: efret <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/06 15:37:08 by efret             #+#    #+#             */
-/*   Updated: 2024/02/07 12:14:45 by efret            ###   ########.fr       */
+/*   Updated: 2024/02/07 13:09:32 by efret            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,3 +35,28 @@ size_t	ft_find_insert_pos(t_stack *stack, t_stack_node *node)
 		return (pos_smallest - (stack->len - pos));
 	return ((pos_smallest + pos) % stack->len);
 }
+
+int	ft_rot_cost(size_t stack_len, size_t pos)
+{
+	if (pos <= stack_len << 1)
+		return ((int)pos);
+	return ((int)(pos - stack_len));
+}
+
+/*
+void	ft_insert_cheapest(t_stacks *stacks)
+{
+	size_t			pos;
+	size_t			inst;
+	size_t			least_inst;
+	t_stack_node	*iter;
+
+	pos = 0;
+	iter = stacks->b->head;
+	least_inst = (size_t)-1;
+	while (pos < stacks->b->len)
+	{
+		inst = ft_find_insert_pos(stacks->a, iter);
+	}
+}
+*/
