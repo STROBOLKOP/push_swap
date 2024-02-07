@@ -6,7 +6,7 @@
 /*   By: efret <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/25 12:39:58 by efret             #+#    #+#             */
-/*   Updated: 2024/02/07 13:04:41 by efret            ###   ########.fr       */
+/*   Updated: 2024/02/07 14:34:10 by efret            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,7 @@ int	main(int argc, char **argv)
 	ft_check_input(stacks, argc - 1, &argv[1]);
 	if (ft_rank_stack(stacks->a))
 		ft_exit_handler(stacks, E_UNEXPECTED_ERROR);
-	if (!ft_check_sorted(stacks))
-		ft_simplest_solve(stacks);
+	ft_simplest_solve(stacks);
 	ft_del_all(&stacks);
 	return (0);
 }

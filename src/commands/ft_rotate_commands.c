@@ -6,11 +6,10 @@
 /*   By: elias <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 13:06:33 by elias             #+#    #+#             */
-/*   Updated: 2024/02/05 14:53:17 by efret            ###   ########.fr       */
+/*   Updated: 2024/02/07 14:49:44 by efret            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../libft/incl/libft.h"
 #include "../../push_swap.h"
 
 int	ft_stack_rot(t_stack *stack)
@@ -26,14 +25,12 @@ void	ft_stacks_ra(t_stacks *stacks)
 {
 	if (ft_stack_rot(stacks->a))
 		ft_exit_handler(stacks, E_UNEXPECTED_ERROR);
-	ft_printf("ra\n");
 }
 
 void	ft_stacks_rb(t_stacks *stacks)
 {
 	if (ft_stack_rot(stacks->b))
 		ft_exit_handler(stacks, E_UNEXPECTED_ERROR);
-	ft_printf("rb\n");
 }
 
 void	ft_stacks_rr(t_stacks *stacks)

@@ -6,11 +6,10 @@
 /*   By: elias <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 13:09:16 by elias             #+#    #+#             */
-/*   Updated: 2024/02/06 16:57:38 by efret            ###   ########.fr       */
+/*   Updated: 2024/02/07 14:46:41 by efret            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../libft/incl/libft.h"
 #include "../../push_swap.h"
 
 int	ft_stack_push(t_stack *dest, t_stack *src)
@@ -28,11 +27,9 @@ int	ft_stack_push(t_stack *dest, t_stack *src)
 void	ft_stacks_pa(t_stacks *stacks)
 {
 	ft_stack_push(stacks->a, stacks->b);
-	ft_printf("pa\n");
 }
 
 void	ft_stacks_pb(t_stacks *stacks)
 {
 	ft_stack_push(stacks->b, stacks->a);
-	ft_printf("pb\n");
 }

@@ -6,7 +6,7 @@
 /*   By: efret <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 11:25:11 by efret             #+#    #+#             */
-/*   Updated: 2024/02/07 13:01:39 by efret            ###   ########.fr       */
+/*   Updated: 2024/02/07 16:51:05 by efret            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,14 @@ typedef struct s_stacks
 	t_stack	*b;
 	size_t	count;
 }	t_stacks;
+
+/* Structure holding values used in ft_insert_cheapest */
+typedef struct s_data_cheapest
+{
+	size_t	cost;
+	int		a_rot_inst;
+	int		b_rot_inst;
+}	t_data_cheapest;
 
 /* Exit codes to use for errors. */
 enum e_exit_code {
@@ -113,18 +121,21 @@ int				ft_rank_stack(t_stack *stack);
 
 /* FILE: src/algorithm/ft_algorithm_utils.c */
 
+void			ft_exec_rot_a(t_stack *stack, int rot_inst);
+void			ft_exec_rot_b(t_stack *stack, int rot_inst);
 size_t			ft_smallest_pos(t_stack *stack);
 void			ft_rot_smallest_top(t_stack *stack);
 int				ft_check_ordered(t_stack *stack);
+
+/* FILE: src/algoritm/ft_algorithm_utils2.c */
+size_t			ft_find_insert_pos(t_stack *stack, t_stack_node *node);
+int				ft_rot_instr(size_t stack_len, size_t pos);
+void			ft_insert_cheapest(t_stacks *stacks);
 
 /* FILE: src/algorithm/ft_algorithm_solve.c */
 
 void			ft_solve3(t_stacks *stacks);
 void			ft_simplest_solve(t_stacks *stacks);
-
-/* FILE: src/algoritm/ft_algorithm_utils2.c */
-size_t			ft_find_insert_pos(t_stack *stack, t_stack_node *node);
-int				ft_rot_cost(size_t stack_len, size_t pos);
 
 /* FILE: src/bonus/ft_display_utils.c */
 size_t			ft_stacks_interactive(t_stacks *stacks);
