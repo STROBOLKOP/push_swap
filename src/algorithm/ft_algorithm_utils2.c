@@ -6,7 +6,7 @@
 /*   By: efret <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/06 15:37:08 by efret             #+#    #+#             */
-/*   Updated: 2024/02/07 16:41:33 by efret            ###   ########.fr       */
+/*   Updated: 2024/02/07 17:57:00 by efret            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ void	ft_insert_cheapest(t_stacks *stacks)
 		{
 			cheapest.a_rot_inst = ft_rot_instr(stacks->a->len, insert_pos);
 			cheapest.b_rot_inst = ft_rot_instr(stacks->b->len, pos);
-			cheapest.cost = cost + cheapest.a_rot_inst + cheapest.b_rot_inst;
+			cheapest.cost = cost;
 		}
 		pos++;
 		iter = iter->next;
