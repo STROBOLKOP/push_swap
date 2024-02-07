@@ -6,7 +6,7 @@
 /*   By: elias <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 12:45:20 by elias             #+#    #+#             */
-/*   Updated: 2024/02/01 12:47:57 by elias            ###   ########.fr       */
+/*   Updated: 2024/02/07 18:28:30 by efret            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,4 +81,5 @@ void	ft_check_input(t_stacks *stacks, int argc, char **argv)
 		i++;
 	}
 	ft_check_duplicates(stacks);
+	stacks->count = stacks->a->len;
 }
