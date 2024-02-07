@@ -6,7 +6,7 @@
 /*   By: efret <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/06 15:37:08 by efret             #+#    #+#             */
-/*   Updated: 2024/02/06 18:44:32 by efret            ###   ########.fr       */
+/*   Updated: 2024/02/07 12:14:45 by efret            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,17 +15,23 @@
 size_t	ft_find_insert_pos(t_stack *stack, t_stack_node *node)
 {
 	size_t			pos;
+	size_t			pos_smallest;
 	t_stack_node	*iter;
 
 	if (!stack->len)
 		return (0);
 	pos = 0;
+	pos_smallest = ft_smallest_pos(stack);
 	iter = stack->head;
+	while (pos++ < pos_smallest)
+		iter = iter->next;
+	pos = 0;
 	while (iter->rank < node->rank && pos < stack->len)
 	{
-		//ft_printf("pos: %d\trank a: %d\trank node: %d\n", pos, iter->rank, node->rank);
 		iter = iter->next;
 		pos++;
 	}
-	return (pos);
+	if (pos_smallest > (size_t)-1 - pos)
+		return (pos_smallest - (stack->len - pos));
+	return ((pos_smallest + pos) % stack->len);
 }
