@@ -6,7 +6,7 @@
 /*   By: efret <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/06 15:37:08 by efret             #+#    #+#             */
-/*   Updated: 2024/02/07 17:57:00 by efret            ###   ########.fr       */
+/*   Updated: 2024/02/08 14:55:06 by efret            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,16 @@ size_t	ft_rot_inst_to_cost(int	instruction)
 	return ((size_t)instruction);
 }
 
-void	ft_insert_cheapest(t_stacks *stacks)
+float	ft_lerp_push_to_b(size_t curr, size_t max)
+{
+	int	groups = 2;
+	float perc = (float)curr / (float)max;
+	int	group_nu = perc * (float)groups + 1;
+	size_t	group_size = max / (size_t)groups;
+	return (group_size * group_nu);
+}
+
+void	ft_cheapest_to_a(t_stacks *stacks)
 {
 	t_data_cheapest	cheapest;
 	size_t			pos;
@@ -81,4 +90,37 @@ void	ft_insert_cheapest(t_stacks *stacks)
 	ft_exec_rot_a(stacks->a, cheapest.a_rot_inst);
 	ft_exec_rot_b(stacks->b, cheapest.b_rot_inst);
 	(ft_stacks_pa(stacks), ft_printf("pa\n"));
+}
+
+void	ft_cheapest_to_b(t_stacks *stacks)
+{
+	t_data_cheapest	cheapest;
+	size_t			pos;
+	size_t			cost;
+	t_stack_node	*iter;
+	float			range;
+
+	pos = 0;
+	iter = stacks->a->head;
+	cheapest.cost = (size_t)-1;
+	cheapest.b_rot_inst = 0;
+	range = ft_lerp_push_to_b(stacks->b->len, stacks->count);
+	if (DEBUG) ft_printf("n: %d\tb_len: %d\tlerp range: %d\n", stacks->count, stacks->b->len, range);
+	while (pos < stacks->a->len)
+	{
+		if ((size_t)iter->rank <= (size_t)range)
+		{
+			cost = ft_rot_inst_to_cost(ft_rot_instr(stacks->a->len, pos));
+			if (cost < cheapest.cost)
+			{
+				cheapest.a_rot_inst = ft_rot_instr(stacks->a->len, pos);
+				cheapest.cost = cost;
+			}
+		}
+		pos++;
+		iter = iter->next;
+	}
+	ft_exec_rot_a(stacks->a, cheapest.a_rot_inst);
+	ft_exec_rot_b(stacks->b, cheapest.b_rot_inst);
+	(ft_stacks_pb(stacks), ft_printf("pb\n"));
 }

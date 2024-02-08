@@ -6,7 +6,7 @@
 /*   By: efret <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 11:25:11 by efret             #+#    #+#             */
-/*   Updated: 2024/02/07 16:51:05 by efret            ###   ########.fr       */
+/*   Updated: 2024/02/08 12:29:21 by efret            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ typedef struct s_stacks
 	size_t	count;
 }	t_stacks;
 
-/* Structure holding values used in ft_insert_cheapest */
+/* Structure holding values used in ft_cheapest_to_a */
 typedef struct s_data_cheapest
 {
 	size_t	cost;
@@ -130,7 +130,9 @@ int				ft_check_ordered(t_stack *stack);
 /* FILE: src/algoritm/ft_algorithm_utils2.c */
 size_t			ft_find_insert_pos(t_stack *stack, t_stack_node *node);
 int				ft_rot_instr(size_t stack_len, size_t pos);
-void			ft_insert_cheapest(t_stacks *stacks);
+void			ft_cheapest_to_a(t_stacks *stacks);
+void			ft_cheapest_to_b(t_stacks *stacks);
+float			ft_lerp_push_to_b(size_t curr, size_t max);
 
 /* FILE: src/algorithm/ft_algorithm_solve.c */
 
