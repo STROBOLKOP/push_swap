@@ -6,7 +6,7 @@
 /*   By: efret <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/06 15:37:08 by efret             #+#    #+#             */
-/*   Updated: 2024/02/08 14:55:06 by efret            ###   ########.fr       */
+/*   Updated: 2024/02/11 18:50:36 by elias            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ int	ft_rot_instr(size_t stack_len, size_t pos)
 	return ((int)(pos - stack_len));
 }
 
-size_t	ft_rot_inst_to_cost(int	instruction)
+size_t	ft_rot_inst_to_cost(int instruction)
 {
 	if (instruction < 0)
 		return ((size_t)(-instruction));
@@ -55,10 +55,15 @@ size_t	ft_rot_inst_to_cost(int	instruction)
 
 float	ft_lerp_push_to_b(size_t curr, size_t max)
 {
-	int	groups = 2;
-	float perc = (float)curr / (float)max;
-	int	group_nu = perc * (float)groups + 1;
-	size_t	group_size = max / (size_t)groups;
+	int		groups;
+	float	perc;
+	int		group_nu;
+	size_t	group_size;
+
+	groups = 2;
+	perc = (float)curr / (float)max;
+	group_nu = perc * (float)groups + 1;
+	group_size = max / (size_t)groups;
 	return (group_size * group_nu);
 }
 
@@ -77,7 +82,7 @@ void	ft_cheapest_to_a(t_stacks *stacks)
 	{
 		insert_pos = ft_find_insert_pos(stacks->a, iter);
 		cost = ft_rot_inst_to_cost(ft_rot_instr(stacks->a->len, insert_pos))
-				+ ft_rot_inst_to_cost(ft_rot_instr(stacks->b->len, pos));
+			+ ft_rot_inst_to_cost(ft_rot_instr(stacks->b->len, pos));
 		if (cost < cheapest.cost)
 		{
 			cheapest.a_rot_inst = ft_rot_instr(stacks->a->len, insert_pos);
@@ -105,7 +110,6 @@ void	ft_cheapest_to_b(t_stacks *stacks)
 	cheapest.cost = (size_t)-1;
 	cheapest.b_rot_inst = 0;
 	range = ft_lerp_push_to_b(stacks->b->len, stacks->count);
-	if (DEBUG) ft_printf("n: %d\tb_len: %d\tlerp range: %d\n", stacks->count, stacks->b->len, range);
 	while (pos < stacks->a->len)
 	{
 		if ((size_t)iter->rank <= (size_t)range)

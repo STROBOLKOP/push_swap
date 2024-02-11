@@ -6,7 +6,7 @@
 /*   By: elias <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 12:45:20 by elias             #+#    #+#             */
-/*   Updated: 2024/02/07 18:28:30 by efret            ###   ########.fr       */
+/*   Updated: 2024/02/11 18:33:48 by elias            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ int	ft_check_sorted(t_stacks *stacks)
 {
 	t_stack_node	*iter;
 
-	if (!stacks->a || !stacks->b || (!stacks->a->len && !stacks->b->len)) // maybe change check for both being empty, we shouldn't be in this funcion if there is no input. Or change the exit status.
+	if (!stacks->a || !stacks->b || (!stacks->a->len && !stacks->b->len))
 		return (-1);
 	if (stacks->b->len)
 		return (0);

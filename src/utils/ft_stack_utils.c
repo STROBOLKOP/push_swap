@@ -6,7 +6,7 @@
 /*   By: elias <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 12:36:33 by elias             #+#    #+#             */
-/*   Updated: 2024/02/06 11:32:25 by efret            ###   ########.fr       */
+/*   Updated: 2024/02/11 18:35:45 by elias            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ void	ft_stackdel_front(t_stack *stack)
 	if (stack->len == 1)
 		stack->last->prev = stack->head;
 	free(tmp);
-	return ; // TODO
+	return ;
 }
 
 void	ft_stackdel(t_stack **stack)
