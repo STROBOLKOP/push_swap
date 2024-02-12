@@ -6,10 +6,11 @@
 /*   By: efret <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/06 17:18:59 by efret             #+#    #+#             */
-/*   Updated: 2024/02/07 16:14:00 by efret            ###   ########.fr       */
+/*   Updated: 2024/02/12 17:04:12 by efret            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+/*
 #include "../../push_swap.h"
 
 void	ft_stack_print(t_stack *stack)
@@ -84,3 +85,4 @@ void	ft_print_insert_pos(t_stacks *stacks)
 		iter = iter->next;
 	}
 }
+*/

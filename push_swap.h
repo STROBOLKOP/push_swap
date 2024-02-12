@@ -6,7 +6,7 @@
 /*   By: efret <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 11:25:11 by efret             #+#    #+#             */
-/*   Updated: 2024/02/12 12:52:56 by efret            ###   ########.fr       */
+/*   Updated: 2024/02/12 17:12:51 by efret            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,6 +90,11 @@ void			ft_check_input(t_stacks *stacks, int argc, char **argv);
 
 void			ft_exit_handler(t_stacks *stacks, int exit_code);
 
+/* FILE: src/utils/ft_math.c */
+
+long			ft_max(long a, long b);
+long long		ft_abs(long long a);
+
 /* FILE: src/commands/ft_swap_commands.c */
 
 int				ft_stack_swap(t_stack *stack);
@@ -122,18 +127,20 @@ int				ft_rank_stack(t_stack *stack);
 
 /* FILE: src/algorithm/ft_algorithm_utils.c */
 
-void			ft_exec_rot_a(t_stack *stack, int rot_inst);
-void			ft_exec_rot_b(t_stack *stack, int rot_inst);
-void			ft_exec_rotations(t_stacks *stacks, t_data_cheapest *cheapest);
 size_t			ft_smallest_pos(t_stack *stack);
-void			ft_rot_smallest_top(t_stack *stack);
 int				ft_check_ordered(t_stack *stack);
+size_t			ft_find_insert_pos(t_stack *stack, t_stack_node *node);
 
 /* FILE: src/algoritm/ft_algorithm_utils2.c */
-size_t			ft_find_insert_pos(t_stack *stack, t_stack_node *node);
+
 int				ft_rot_instr(size_t stack_len, size_t pos);
 void			ft_cheapest_to_a(t_stacks *stacks);
 void			ft_cheapest_to_b(t_stacks *stacks);
+
+/* FILE: src/algorithm/ft_algorithm_utils3.c */
+
+void			ft_exec_rotations(t_stacks *stacks, t_data_cheapest *cheapest);
+void			ft_rot_smallest_top(t_stack *stack);
 
 /* FILE: src/algorithm/ft_algorithm_solve.c */
 
