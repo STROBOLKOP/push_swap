@@ -6,7 +6,7 @@
 /*   By: efret <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/06 15:37:08 by efret             #+#    #+#             */
-/*   Updated: 2024/02/11 18:50:36 by elias            ###   ########.fr       */
+/*   Updated: 2024/02/12 12:49:34 by efret            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,32 @@ size_t	ft_rot_inst_to_cost(int instruction)
 	return ((size_t)instruction);
 }
 
-float	ft_lerp_push_to_b(size_t curr, size_t max)
+long	ft_max(long a, long b)
+{
+	if (a > b)
+		return (a);
+	return (b);
+}
+
+size_t	ft_insert_cost_to_a(t_stacks *stacks, size_t insert_pos, size_t pos_b)
+{
+	size_t	tmp;
+	size_t	cost;
+
+	cost = ft_max(insert_pos, pos_b);
+	tmp = ft_max(stacks->a->len - insert_pos, stacks->b->len - pos_b);
+	if (tmp < cost)
+		cost = tmp;
+	tmp = ft_max(stacks->a->len - insert_pos, pos_b);
+	if (tmp < cost)
+		cost = tmp;
+	tmp = ft_max(insert_pos, stacks->b->len - pos_b);
+	if (tmp < cost)
+		cost = tmp;
+	return (cost);
+}
+
+int	ft_consider_push_to_b(size_t rank, t_stacks *stacks)
 {
 	int		groups;
 	float	perc;
@@ -81,8 +106,9 @@ void	ft_cheapest_to_a(t_stacks *stacks)
 	while (pos < stacks->b->len)
 	{
 		insert_pos = ft_find_insert_pos(stacks->a, iter);
-		cost = ft_rot_inst_to_cost(ft_rot_instr(stacks->a->len, insert_pos))
-			+ ft_rot_inst_to_cost(ft_rot_instr(stacks->b->len, pos));
+		cost = ft_insert_cost_to_a(stacks, insert_pos, pos);
+		//cost = ft_rot_inst_to_cost(ft_rot_instr(stacks->a->len, insert_pos))
+			//+ ft_rot_inst_to_cost(ft_rot_instr(stacks->b->len, pos));
 		if (cost < cheapest.cost)
 		{
 			cheapest.a_rot_inst = ft_rot_instr(stacks->a->len, insert_pos);
@@ -92,8 +118,9 @@ void	ft_cheapest_to_a(t_stacks *stacks)
 		pos++;
 		iter = iter->next;
 	}
-	ft_exec_rot_a(stacks->a, cheapest.a_rot_inst);
-	ft_exec_rot_b(stacks->b, cheapest.b_rot_inst);
+	ft_exec_rotations(stacks, &cheapest);
+	//ft_exec_rot_a(stacks->a, cheapest.a_rot_inst);
+	//ft_exec_rot_b(stacks->b, cheapest.b_rot_inst);
 	(ft_stacks_pa(stacks), ft_printf("pa\n"));
 }
 
@@ -103,16 +130,14 @@ void	ft_cheapest_to_b(t_stacks *stacks)
 	size_t			pos;
 	size_t			cost;
 	t_stack_node	*iter;
-	float			range;
 
 	pos = 0;
 	iter = stacks->a->head;
 	cheapest.cost = (size_t)-1;
 	cheapest.b_rot_inst = 0;
-	range = ft_lerp_push_to_b(stacks->b->len, stacks->count);
 	while (pos < stacks->a->len)
 	{
-		if ((size_t)iter->rank <= (size_t)range)
+		if (ft_consider_push_to_b(iter->rank, stacks))
 		{
 			cost = ft_rot_inst_to_cost(ft_rot_instr(stacks->a->len, pos));
 			if (cost < cheapest.cost)
@@ -124,7 +149,8 @@ void	ft_cheapest_to_b(t_stacks *stacks)
 		pos++;
 		iter = iter->next;
 	}
-	ft_exec_rot_a(stacks->a, cheapest.a_rot_inst);
-	ft_exec_rot_b(stacks->b, cheapest.b_rot_inst);
+	ft_exec_rotations(stacks, &cheapest);
+	//ft_exec_rot_a(stacks->a, cheapest.a_rot_inst);
+	//ft_exec_rot_b(stacks->b, cheapest.b_rot_inst);
 	(ft_stacks_pb(stacks), ft_printf("pb\n"));
 }

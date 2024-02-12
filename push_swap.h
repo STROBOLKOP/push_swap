@@ -6,7 +6,7 @@
 /*   By: efret <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 11:25:11 by efret             #+#    #+#             */
-/*   Updated: 2024/02/08 12:29:21 by efret            ###   ########.fr       */
+/*   Updated: 2024/02/12 12:52:56 by efret            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ typedef struct s_data_cheapest
 	size_t	cost;
 	int		a_rot_inst;
 	int		b_rot_inst;
+	int		rr_inst;
 }	t_data_cheapest;
 
 /* Exit codes to use for errors. */
@@ -123,6 +124,7 @@ int				ft_rank_stack(t_stack *stack);
 
 void			ft_exec_rot_a(t_stack *stack, int rot_inst);
 void			ft_exec_rot_b(t_stack *stack, int rot_inst);
+void			ft_exec_rotations(t_stacks *stacks, t_data_cheapest *cheapest);
 size_t			ft_smallest_pos(t_stack *stack);
 void			ft_rot_smallest_top(t_stack *stack);
 int				ft_check_ordered(t_stack *stack);
@@ -132,7 +134,6 @@ size_t			ft_find_insert_pos(t_stack *stack, t_stack_node *node);
 int				ft_rot_instr(size_t stack_len, size_t pos);
 void			ft_cheapest_to_a(t_stacks *stacks);
 void			ft_cheapest_to_b(t_stacks *stacks);
-float			ft_lerp_push_to_b(size_t curr, size_t max);
 
 /* FILE: src/algorithm/ft_algorithm_solve.c */
 
