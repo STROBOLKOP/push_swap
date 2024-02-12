@@ -85,11 +85,20 @@ int	ft_consider_push_to_b(size_t rank, t_stacks *stacks)
 	int		group_nu;
 	size_t	group_size;
 
-	groups = 2;
-	perc = (float)curr / (float)max;
-	group_nu = perc * (float)groups + 1;
-	group_size = max / (size_t)groups;
-	return (group_size * group_nu);
+	if (stacks->count < 80)
+		groups = 1;
+	else if (stacks->count < 200)
+		groups = 3;
+	else if (stacks->count <= 500)
+		groups = 5;
+	else
+		groups = 7;
+	perc = (float)stacks->b->len / (float)stacks->count;
+	group_nu = perc * (float)groups;
+	group_size = stacks->count / (size_t)groups;
+	if (group_size * group_nu <= rank && rank < group_size * (group_nu + 1.))
+		return (1);
+	return (0);
 }
 
 void	ft_cheapest_to_a(t_stacks *stacks)
