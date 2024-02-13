@@ -6,7 +6,7 @@
 /*   By: efret <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/06 15:37:08 by efret             #+#    #+#             */
-/*   Updated: 2024/02/12 17:12:29 by efret            ###   ########.fr       */
+/*   Updated: 2024/02/13 15:38:38 by efret            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,10 +46,10 @@ static int	ft_consider_push_to_b(size_t rank, t_stacks *stacks)
 	size_t	group_size;
 
 	groups = stacks->count / 150;
-	if (stacks->count < 80)
+	if (stacks->count < 150)
 		groups = 1;
-	else if (stacks->count < 200)
-		groups = 3;
+	else if (stacks->count < 250)
+		groups = 1;
 	else if (stacks->count <= 500)
 		groups = 4;
 	perc = (float)stacks->b->len / (float)stacks->count;
