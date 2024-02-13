@@ -6,7 +6,7 @@
 /*   By: elias <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 12:43:30 by elias             #+#    #+#             */
-/*   Updated: 2024/02/01 12:52:58 by elias            ###   ########.fr       */
+/*   Updated: 2024/02/13 14:24:25 by efret            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,8 @@ int	ft_atoi_ofc(t_stacks *stacks, const char *nptr)
 	if (*nptr == '+' || *nptr == '-')
 		if (*nptr++ == '-')
 			sign = -1;
+	if (!(*nptr))
+		ft_exit_handler(stacks, E_INVALID_INPUT);
 	while (ft_between_incl(*nptr, '0', '9'))
 	{
 		new_number = number * 10 + sign * (*nptr++ - '0');
