@@ -6,7 +6,7 @@
 /*   By: efret <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/06 17:18:59 by efret             #+#    #+#             */
-/*   Updated: 2024/02/12 17:04:12 by efret            ###   ########.fr       */
+/*   Updated: 2024/02/13 13:00:33 by efret            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,8 @@ void	ft_print_insert_pos(t_stacks *stacks)
 	iter = stacks->b->head;
 	for (size_t i = 0; i < stacks->b->len; i++)
 	{
-		ft_printf("Where to insert %d in a: %d\n", i, ft_find_insert_pos(stacks->a, iter));
+		ft_printf("Where to insert %d in a: %d\n"
+				, i, ft_find_insert_pos(stacks->a, iter));
 		iter = iter->next;
 	}
 }
