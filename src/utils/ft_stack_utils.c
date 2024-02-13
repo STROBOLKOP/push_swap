@@ -6,7 +6,7 @@
 /*   By: elias <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 12:36:33 by elias             #+#    #+#             */
-/*   Updated: 2024/02/11 18:35:45 by elias            ###   ########.fr       */
+/*   Updated: 2024/02/13 11:54:15 by efret            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,13 +57,13 @@ void	ft_stackdel(t_stack **stack)
 	return ;
 }
 
-void	ft_stackadd_front(t_stack *stack, int value)
+int	ft_stackadd_front(t_stack *stack, int value)
 {
 	t_stack_node	*tmp;
 
 	tmp = ft_new_stack_node(value);
 	if (!tmp)
-		return (ft_stackdel_front(stack));
+		return (E_MALLOC_FAILURE);
 	if (!stack->len)
 	{
 		stack->head = tmp;
@@ -80,15 +80,16 @@ void	ft_stackadd_front(t_stack *stack, int value)
 		stack->last->next = tmp;
 	}
 	(stack->len)++;
+	return (E_SUCCES);
 }
 
-void	ft_stackadd_back(t_stack *stack, int value)
+int	ft_stackadd_back(t_stack *stack, int value)
 {
 	t_stack_node	*tmp;
 
 	tmp = ft_new_stack_node(value);
 	if (!tmp)
-		return (ft_stackdel_front(stack));
+		return (E_MALLOC_FAILURE);
 	if (!stack->len)
 		stack->head = tmp;
 	else
@@ -98,4 +99,5 @@ void	ft_stackadd_back(t_stack *stack, int value)
 	tmp->next = stack->head;
 	stack->head->prev = tmp;
 	(stack->len)++;
+	return (E_SUCCES);
 }

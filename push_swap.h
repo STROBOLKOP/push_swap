@@ -6,7 +6,7 @@
 /*   By: efret <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 11:25:11 by efret             #+#    #+#             */
-/*   Updated: 2024/02/12 17:12:51 by efret            ###   ########.fr       */
+/*   Updated: 2024/02/13 11:55:20 by efret            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,8 +65,8 @@ enum e_exit_code {
 
 /* make a new stack node with the value set to value. */
 t_stack_node	*ft_new_stack_node(int value);
-void			ft_stackadd_front(t_stack *stack, int value);
-void			ft_stackadd_back(t_stack *stack, int value);
+int				ft_stackadd_front(t_stack *stack, int value);
+int				ft_stackadd_back(t_stack *stack, int value);
 void			ft_stackdel_front(t_stack *stack);
 void			ft_stackdel(t_stack **stack);
 

@@ -6,7 +6,7 @@
 /*   By: efret <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/25 12:39:58 by efret             #+#    #+#             */
-/*   Updated: 2024/02/07 14:34:10 by efret            ###   ########.fr       */
+/*   Updated: 2024/02/13 12:59:31 by efret            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int	main(int argc, char **argv)
 	t_stacks	*stacks;
 
 	if (argc < 2)
-		return (0);
+		return (E_SUCCES);
 	stacks = ft_init_stacks();
 	if (!stacks || !stacks->a || !stacks->b)
 		ft_exit_handler(stacks, E_MALLOC_FAILURE);
@@ -26,7 +26,7 @@ int	main(int argc, char **argv)
 		ft_exit_handler(stacks, E_UNEXPECTED_ERROR);
 	ft_simplest_solve(stacks);
 	ft_del_all(&stacks);
-	return (0);
+	return (E_SUCCES);
 }
 
 /*

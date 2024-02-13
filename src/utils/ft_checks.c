@@ -6,7 +6,7 @@
 /*   By: elias <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 12:45:20 by elias             #+#    #+#             */
-/*   Updated: 2024/02/11 18:33:48 by elias            ###   ########.fr       */
+/*   Updated: 2024/02/13 12:01:32 by efret            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,8 @@ void	ft_check_input(t_stacks *stacks, int argc, char **argv)
 	{
 		if (!ft_is_number(argv[i]))
 			ft_exit_handler(stacks, E_INVALID_INPUT);
-		ft_stackadd_back(stacks->a, ft_atoi_ofc(stacks, argv[i]));
+		if (ft_stackadd_back(stacks->a, ft_atoi_ofc(stacks, argv[i])))
+			ft_exit_handler(stacks, E_MALLOC_FAILURE);
 		i++;
 	}
 	ft_check_duplicates(stacks);

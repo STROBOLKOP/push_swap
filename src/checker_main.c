@@ -6,7 +6,7 @@
 /*   By: elias <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 16:47:03 by elias             #+#    #+#             */
-/*   Updated: 2024/02/06 17:00:19 by efret            ###   ########.fr       */
+/*   Updated: 2024/02/13 12:59:16 by efret            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int	main(int argc, char **argv)
 	size_t		count;
 
 	if (argc < 2)
-		return (0);
+		return (E_SUCCES);
 	stacks = ft_init_stacks();
 	ft_check_input(stacks, argc - 1, &argv[1]);
 	if (ft_rank_stack(stacks->a))
@@ -32,7 +32,7 @@ int	main(int argc, char **argv)
 		ft_printf("KO: Oh no, that did not sort it :(\n");
 	ft_printf("You did %d instrucions.\n", count);
 	ft_del_all(&stacks);
-	return (0);
+	return (E_SUCCES);
 }
 
 /*

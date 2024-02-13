@@ -6,7 +6,7 @@
 /*   By: elias <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 13:09:16 by elias             #+#    #+#             */
-/*   Updated: 2024/02/11 18:38:24 by elias            ###   ########.fr       */
+/*   Updated: 2024/02/13 12:09:10 by efret            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,8 @@ int	ft_stack_push(t_stack *dest, t_stack *src)
 		return (E_UNEXPECTED_ERROR);
 	if (!src->len)
 		return (E_SUCCES);
-	ft_stackadd_front(dest, src->head->value);
+	if (ft_stackadd_front(dest, src->head->value))
+		return (E_MALLOC_FAILURE);
 	dest->head->rank = src->head->rank;
 	ft_stackdel_front(src);
 	return (E_SUCCES);
@@ -26,10 +27,12 @@ int	ft_stack_push(t_stack *dest, t_stack *src)
 
 void	ft_stacks_pa(t_stacks *stacks)
 {
-	ft_stack_push(stacks->a, stacks->b);
+	if (ft_stack_push(stacks->a, stacks->b))
+		ft_exit_handler(stacks, E_UNEXPECTED_ERROR);
 }
 
 void	ft_stacks_pb(t_stacks *stacks)
 {
-	ft_stack_push(stacks->b, stacks->a);
+	if (ft_stack_push(stacks->b, stacks->a))
+		ft_exit_handler(stacks, E_UNEXPECTED_ERROR);
 }
