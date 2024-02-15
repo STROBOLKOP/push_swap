@@ -6,7 +6,7 @@
 /*   By: efret <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/06 15:37:08 by efret             #+#    #+#             */
-/*   Updated: 2024/02/14 18:52:29 by efret            ###   ########.fr       */
+/*   Updated: 2024/02/15 11:46:39 by efret            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,7 @@ void	ft_cheapest_to_a(t_stacks *stacks)
 	(ft_stacks_pa(stacks), ft_printf("pa\n"));
 }
 
-void	ft_cheapest_to_b(t_stacks *stacks)
+void	ft_phase_1_to_b(t_stacks *stacks)
 {
 	if (ft_group(stacks->b->len, stacks->a->head->rank, stacks, 1))
 		(ft_stacks_pb(stacks), ft_printf("pb\n"));

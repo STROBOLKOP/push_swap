@@ -6,7 +6,7 @@
 /*   By: efret <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/06 15:08:30 by efret             #+#    #+#             */
-/*   Updated: 2024/02/12 15:46:50 by efret            ###   ########.fr       */
+/*   Updated: 2024/02/15 11:48:13 by efret            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,12 @@ void	ft_solve3(t_stacks *stacks)
 	ft_rot_smallest_top(stacks->a);
 }
 
-void	ft_simplest_solve(t_stacks *stacks)
+void	ft_solve(t_stacks *stacks)
 {
 	if (!ft_check_ordered(stacks->a))
 	{
 		while (stacks->a->len > 3)
-			ft_cheapest_to_b(stacks);
+			ft_phase_1_to_b(stacks);
 		if (DEBUG)
 			ft_display_stacks(stacks);
 		if (!ft_check_ordered(stacks->a))

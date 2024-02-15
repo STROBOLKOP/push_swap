@@ -6,7 +6,7 @@
 /*   By: efret <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 11:25:11 by efret             #+#    #+#             */
-/*   Updated: 2024/02/13 11:55:20 by efret            ###   ########.fr       */
+/*   Updated: 2024/02/15 11:47:06 by efret            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -135,7 +135,7 @@ size_t			ft_find_insert_pos(t_stack *stack, t_stack_node *node);
 
 int				ft_rot_instr(size_t stack_len, size_t pos);
 void			ft_cheapest_to_a(t_stacks *stacks);
-void			ft_cheapest_to_b(t_stacks *stacks);
+void			ft_phase_1_to_b(t_stacks *stacks);
 
 /* FILE: src/algorithm/ft_algorithm_utils3.c */
 
@@ -145,7 +145,7 @@ void			ft_rot_smallest_top(t_stack *stack);
 /* FILE: src/algorithm/ft_algorithm_solve.c */
 
 void			ft_solve3(t_stacks *stacks);
-void			ft_simplest_solve(t_stacks *stacks);
+void			ft_solve(t_stacks *stacks);
 
 /* FILE: src/bonus/ft_display_utils.c */
 size_t			ft_stacks_interactive(t_stacks *stacks);
