@@ -6,7 +6,7 @@
 /*   By: elias <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 13:04:58 by elias             #+#    #+#             */
-/*   Updated: 2024/02/07 16:38:24 by efret            ###   ########.fr       */
+/*   Updated: 2024/02/15 12:15:15 by efret            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,10 @@ int	ft_stack_swap(t_stack *stack)
 	int		tmp;
 	size_t	tmp_rank;
 
-	if (!stack || stack->len <= 1)
+	if (!stack)
 		return (E_UNEXPECTED_ERROR);
+	if (stack->len <= 1)
+		return (E_SUCCES);
 	tmp = stack->head->value;
 	stack->head->value = stack->head->next->value;
 	stack->head->next->value = tmp;
