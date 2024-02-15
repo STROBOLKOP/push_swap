@@ -6,7 +6,7 @@
 /*   By: elias <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 13:07:34 by elias             #+#    #+#             */
-/*   Updated: 2024/02/12 12:04:47 by efret            ###   ########.fr       */
+/*   Updated: 2024/02/15 12:10:36 by efret            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,10 @@
 
 int	ft_stack_rev_rot(t_stack *stack)
 {
-	if (!stack || stack->len <= 1)
+	if (!stack)
 		return (E_UNEXPECTED_ERROR);
+	if (stack->len <= 1)
+		return (E_SUCCES);
 	stack->head = stack->head->prev;
 	stack->last = stack->last->prev;
 	return (E_SUCCES);
